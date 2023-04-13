@@ -57,6 +57,8 @@ extra:
 
 extra_css:
   - https://cdn.tonycrane.cc/jbmono/jetbrainsmono.css
+  - https://cdn.tonycrane.cc/utils/katex.min.css
+  
 
 copyright: |
   &copy; 2023<a href="https://github.com/dragonzhoulong" target="_blank" rel="noopener"> dragon</a>
