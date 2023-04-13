@@ -1,5 +1,6 @@
 site_name: MyDocs for cyberalong
 theme:
+  font: false
   name: material
   features:
     - navigation.tabs
@@ -52,6 +53,10 @@ extra:
       link: https://github.com/dragonzhoulong
     # - icon: fontawesome/brands/zhihu
     #   link: 
+
+extra_css:
+  -   - https://cdn.tonycrane.cc/jbmono/jetbrainsmono.css
+
 copyright: |
   &copy; 2023<a href="https://github.com/dragonzhoulong" target="_blank" rel="noopener"> dragon</a>
    
