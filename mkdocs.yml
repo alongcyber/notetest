@@ -1,6 +1,6 @@
 site_name: MyDocs for cyberalong
 theme:
-  font: false
+  
   name: material
   features:
     - navigation.tabs
@@ -12,6 +12,7 @@ theme:
     - content.tabs.link
     - content.code.annotate
     - content.code.copy
+  font: false 
   language: zh
   palette: 
     - scheme: default
@@ -55,7 +56,7 @@ extra:
     #   link: 
 
 extra_css:
-  -   - https://cdn.tonycrane.cc/jbmono/jetbrainsmono.css
+  - https://cdn.tonycrane.cc/jbmono/jetbrainsmono.css
 
 copyright: |
   &copy; 2023<a href="https://github.com/dragonzhoulong" target="_blank" rel="noopener"> dragon</a>
