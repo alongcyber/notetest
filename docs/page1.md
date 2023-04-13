@@ -1,4 +1,4 @@
-# Page 2
+# 建站的记录
 ## Another heading
 
 Some more shit
@@ -13,3 +13,14 @@ Some more shit
 文档看的不够仔细.
 开始嗯造
 ## Customization
+ - nav
+ - js
+ - css
+ 目前了解的情况,大概就是nav是navigator导航,js应该跟katex有点关系,css大概或许已经解决?(haha)
+接下来想做的事情,~~大概就是好好的写note了.~~,大概就是梳理清除nav的用法,然后改一下下icon,然后开始嗯造note
+## 很开心的事情
+目前总算把git最基本的一些东西搞的比较清楚了,还没弄清楚的是merge这些多线开发,团队协作的东西,但是我单人开发,单项开法.
+
+好像markdown也有点这个就近原则的意思,听难绷的.
+
+这个星期接下来的时间就会是恩造,积分高数balabla.
