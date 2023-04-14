@@ -1,10 +1,13 @@
 site_name: MyDocs for cyberalong
 theme:
-  
+  icon: 
+      logo: simple/aerlingus
   name: material
   features:
+    - navigation.instant
     - navigation.tabs
     - navigation.sections
+    - navigation.path
     - toc.integrate
     - navigation.top
     - search.suggest
@@ -19,13 +22,13 @@ theme:
       toggle:
         icon: material/toggle-switch-off-outline
         name: Switch to dark mode
-      primary: teal
-      accent: purple
+      primary: indigo 
+      accent: blue
     - scheme: slate
       toggle:
         icon: material/toggle-switch
         name: Switch to light mode
-      primary: teal
+      primary: indigo
       accent: lime
 
 #代码高亮
@@ -74,7 +77,9 @@ extra_css:
   - css/custom.css
 extra_javascript:
   - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
-  - javascripts/tablesort.js
+  - js/tablesort.js
+  - https://cdn.tonycrane.cc/utils/katex.min.js
+  - js/katex.js
 
 copyright: |
   &copy; 2023<a href="https://github.com/dragonzhoulong" target="_blank" rel="noopener"> dragon</a>
@@ -82,4 +87,12 @@ plugins:
   - table-reader
   - search
   
-      
+  
+nav:
+  - Home:
+    - index.md
+    - buidling: page1.md
+  - CSAPP:
+    - csapp/index.md
+  - PA:
+    - PA/index.md
