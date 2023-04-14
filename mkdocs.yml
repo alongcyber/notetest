@@ -30,6 +30,7 @@ theme:
 
 #代码高亮
 markdown_extensions:
+  - tables
   - toc:
       permalink: true
       toc_depth: 4
@@ -59,9 +60,7 @@ markdown_extensions:
       anchor_linenums: true
   - pymdownx.arithmatex:
       generic: true
-#博客
-# plugins:
-#   - blog
+
 extra:
   social:
     - icon: fontawesome/brands/github-alt
@@ -73,7 +72,14 @@ extra_css:
   - https://cdn.tonycrane.cc/jbmono/jetbrainsmono.css
   - https://cdn.tonycrane.cc/utils/katex.min.css
   - css/custom.css
+extra_javascript:
+  - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
+  - javascripts/tablesort.js
 
 copyright: |
   &copy; 2023<a href="https://github.com/dragonzhoulong" target="_blank" rel="noopener"> dragon</a>
-   
+plugins:
+  - table-reader
+  - search
+  
+      

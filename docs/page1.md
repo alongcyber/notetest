@@ -24,3 +24,19 @@ Some more shit
 好像markdown也有点这个就近原则的意思,听难绷的.
 
 这个星期接下来的时间就会是恩造,积分高数balabla.
+
+Changing the logo and icons
+When installing Material for Mkdocs,you immediately get access to over 8,000 icons ready to be used for customization  of specific parts of the theme and/or then writing your documentation in Markdown.Not enough
+
+## 关于table
+| shit  | shit    |
+|-------|---------|
+|get    |shit     |
+|`get`  |:material-check: Fetch resource|
+|`PUT`  |:material-check-all: Update res|
+
+->
+
+{{ read_csv('./data.csv') }}
+
+->
