@@ -96,3 +96,5 @@ nav:
     - csapp/index.md
   - PA:
     - PA/index.md
+  - tool:
+    - tool/index.md
