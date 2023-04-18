@@ -99,7 +99,11 @@ nav:
     - buidling: page1.md
   - CSAPP:
     - csapp/index.md
+    - bomblab: csapp/csapp.md
+
   - PA:
     - PA/index.md
+    - PA: PA/PA.md
   - tool:
     - tool/index.md
+    - git: tool/git.md
