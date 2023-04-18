@@ -3,12 +3,15 @@ theme:
   icon: 
       logo: simple/aerlingus
   name: material
+  custom_dir: overrides
+
   features:
     - navigation.instant
     - navigation.tabs
     - navigation.sections
     - navigation.path
     - toc.integrate
+    - toc.follow
     - navigation.top
     - search.suggest
     - search.highlight
@@ -36,7 +39,9 @@ markdown_extensions:
   - tables
   - toc:
       permalink: true
-      toc_depth: 4
+      title: On this Page
+      toc_depth: 4  
+      permalink_title: Anchor link to this section for reference
   # - meta
   - def_list
   - attr_list
