@@ -141,5 +141,44 @@ done:
 ```
 如果在编译器中开启 -O1 优化，那么会把 While 先翻译成 Do-While，然后再转换成对应的 Goto 版本，因为 Do-While 语句执行起来更快，更符合 CPU 的运算模型。
 
+### For Loops
+``` c title="for loops的等价"
+for(init-expr;test-expr;update-expr){
+    body-statement
+}
 
+init-expr;
+while(test-expr){
+    body-statement
+    update-expr
+}
 
+```
+
+for循环是如何实现n的阶乘
+=== c 
+
+    ``` c
+    long fact_for(long n){
+        long i;
+        long result = 1;
+        for(i=2;i<=n;i++){
+            result *= i;
+        }
+        return result;
+    }
+    ```
+=== x86asm
+
+    ``` x86asm
+        movl $1 %eax
+        movl $2 %edx
+        jmp .L2
+    .L3
+        imulq %rdx,%rax
+        addq $1,%rdx
+    .L2
+        cmpq %rdi,%rdx
+        jl .L3
+        rep ret
+    ```
