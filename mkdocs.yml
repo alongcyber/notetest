@@ -1,6 +1,6 @@
 site_name: MyDocs for cyberalong
 theme:
-  favicon: aerlingus-color.png
+  favicon: assets/logo.png
   icon: 
       logo: simple/aerlingus
       
