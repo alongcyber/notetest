@@ -107,3 +107,6 @@ nav:
   - tool:
     - tool/index.md
     - git: tool/git.md
+  - leetcode:
+    - leetcode/index.md
+    - 基础算法: leetcode/base.md
