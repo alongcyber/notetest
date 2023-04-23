@@ -1,7 +1,10 @@
 site_name: MyDocs for cyberalong
 theme:
+  favicon: aerlingus-color.png
   icon: 
       logo: simple/aerlingus
+      
+      
   name: material
   custom_dir: overrides
 
@@ -104,6 +107,7 @@ nav:
   - PA:
     - PA/index.md
     - PA: PA/PA.md
+    - riscv: PA/riscv.md
   - tool:
     - tool/index.md
     - git: tool/git.md
