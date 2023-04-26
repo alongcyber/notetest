@@ -156,7 +156,7 @@ while(test-expr){
 ```
 
 for循环是如何实现n的阶乘
-=== c 
+=== "c" 
 
     ``` c
     long fact_for(long n){
@@ -168,7 +168,7 @@ for循环是如何实现n的阶乘
         return result;
     }
     ```
-=== x86asm
+=== "x86asm"
 
     ``` x86asm
         movl $1 %eax
