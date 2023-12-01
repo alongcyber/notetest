@@ -108,3 +108,8 @@ Some more shit
 ## nav(导航)
 
 
+## neovim
++  四种mode`command`,`insert`,`normal`,`view`.
++  `Esc`  => `normal` => `i`,`I`,`o`,`O`,`a`,`A` => `insert`=>`Esc` => `normal`=>`ctrl+v`=>`view`=>`:`=>`command`
+
++ `0`
