@@ -113,3 +113,57 @@ Some more shit
 +  `Esc`  => `normal` => `i`,`I`,`o`,`O`,`a`,`A` => `insert`=>`Esc` => `normal`=>`ctrl+v`=>`view`=>`:`=>`command`
 
 + `0`
+
+## 使用多个密钥来在多个github账号上切换
+How can I configure multiple SSH keys for different GitHub accounts?
+To configure multiple SSH keys for different GitHub accounts, you can follow these steps:
+
+1. **Generate SSH keys**: For each GitHub account, generate a new SSH key (if you haven't already) with a unique email address.
+
+```bash
+ssh-keygen -t rsa -b 4096 -C "your-email@example.com"
+```
+
+When prompted, give each key a unique name, such as `id_rsa_account1`, `id_rsa_account2`, etc.
+
+2. **Add SSH keys to ssh-agent**: Start the ssh-agent in the background and add your new SSH private key to the ssh-agent.
+
+```bash
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa_account1
+ssh-add ~/.ssh/id_rsa_account2
+```
+
+3. **Add SSH keys to GitHub accounts**: For each GitHub account, go to Settings -> SSH and GPG keys -> New SSH key, then paste the contents of the corresponding public key file (e.g., `id_rsa_account1.pub`, `id_rsa_account2.pub`, etc.).
+
+4. **Create SSH config file**: Create a new configuration file for SSH in your user directory, if it doesn't already exist.
+
+```bash
+touch ~/.ssh/config
+```
+
+5. **Edit SSH config file**: Open the SSH config file in a text editor, and add an entry for each GitHub account.
+
+```bash
+# Account 1
+Host github.com-account1
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_rsa_account1
+
+# Account 2
+Host github.com-account2
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_rsa_account2
+```
+
+6. **Use SSH config in Git**: When cloning a repository, use the Host alias you set in the SSH config file.
+
+```bash
+git clone git@github.com-account1:username/repo.git
+```
+
+Replace `username` with your GitHub username and `repo` with your repository name. Use the correct Host alias for the account you want to use.
+
+This way, you can use multiple SSH keys for different GitHub accounts.
