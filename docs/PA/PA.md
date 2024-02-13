@@ -380,4 +380,58 @@ you?
 
 这让我很困惑,出现该报错Git: gpg failed to sign the data，但是我仅仅配置过ssh-key,而且我在vscode输入法会把,半角逗号自动改为全角真的恼火.明白了现在是因为vscode有个哈批设置叫做提交也得commit signed真的是哈批下的一比,[how-and-why-to-sign-git-commits](https://withblue.ink/2020/05/17/how-and-why-to-sign-git-commits.html),wcnmd太抽象了,这byd也能倒逼的,用vscode功能倒逼用户用这个commit signed,byd每次提交都得验证密钥.有点像byd每一下都得验证自愿了
 
+#### 单步执行
+从`cmd_c`就可以看出来`cpu_exec()`的含金量
+=== "cmd_s"
+    ``` c
+    static int cmd_s(char*args){
+    char *arg = strtok(NULL, " ");
+    if(arg == NULL){
+        cpu_exec(1);
+    }
+    else{
+        int n = atoi(arg);
+        if(n <= 0){
+        printf("Invalid argument\n");
+        return 0;
+        }
+        cpu_exec(n);
+    }
+    return 0;
+    }
 
+    ```
+=== "cpu_exec()"
+    ``` c
+    /* Simulate how the CPU works. */
+    void cpu_exec(uint64_t n) {
+    g_print_step = (n < MAX_INST_TO_PRINT);
+    switch (nemu_state.state) {
+        case NEMU_END: case NEMU_ABORT:
+        printf("Program execution has ended. To restart the program, exit NEMU and run again.\n");
+        return;
+        default: nemu_state.state = NEMU_RUNNING;
+    }
+
+    uint64_t timer_start = get_time();
+
+    execute(n);
+
+    uint64_t timer_end = get_time();
+    g_timer += timer_end - timer_start;
+
+    switch (nemu_state.state) {
+        case NEMU_RUNNING: nemu_state.state = NEMU_STOP; break;
+
+        case NEMU_END: case NEMU_ABORT:
+        Log("nemu: %s at pc = " FMT_WORD,
+            (nemu_state.state == NEMU_ABORT ? ANSI_FMT("ABORT", ANSI_FG_RED) :
+            (nemu_state.halt_ret == 0 ? ANSI_FMT("HIT GOOD TRAP", ANSI_FG_GREEN) :
+                ANSI_FMT("HIT BAD TRAP", ANSI_FG_RED))),
+            nemu_state.halt_pc);
+        // fall through
+        case NEMU_QUIT: statistic();
+    }
+    }
+
+    ```
