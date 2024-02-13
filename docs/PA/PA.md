@@ -378,6 +378,6 @@ you?
 
 #### vscode不能正确的提交我的仓库
 
-这让我很困惑,出现该报错Git: gpg failed to sign the data，但是我仅仅配置过ssh-key,而且我在vscode输入法会把,半角逗号自动改为全角真的恼火.
+这让我很困惑,出现该报错Git: gpg failed to sign the data，但是我仅仅配置过ssh-key,而且我在vscode输入法会把,半角逗号自动改为全角真的恼火.明白了现在是因为vscode有个哈批设置叫做提交也得commit signed真的是哈批下的一比,[how-and-why-to-sign-git-commits](https://withblue.ink/2020/05/17/how-and-why-to-sign-git-commits.html),wcnmd太抽象了,这byd也能倒逼的,用vscode功能倒逼用户用这个commit signed,byd每次提交都得验证密钥.有点像byd每一下都得验证自愿了
 
-#### 再次尝试
+
