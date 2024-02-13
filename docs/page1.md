@@ -3,7 +3,7 @@
 
 Some more shit
 ### 一些沟是
-哈哈哈把喇叭卡和单位,很喜欢我的键盘敲击的声音,有一种清新愉悦的快感,谁懂阿,给虚拟机新增了32GB内存，顿时流畅了许多,输入法不再有莫名的顿挫.
+哈哈哈把喇叭卡和单位,很喜欢我的键盘敲击的声音,有一种清新愉悦的快感,谁懂阿,给虚拟机新增了32GB内存,顿时流畅了许多,输入法不再有莫名的顿挫.
 ### 这些天
 半角字母的美,谁懂,感觉很多事情,没有必要弄的不一样,懂我意思么.
 ### 关于这个礼拜
@@ -33,16 +33,17 @@ Some more shit
 
 ## 关于table
 | shit  | shit    |
-|-------|---------|
-|get    |shit     |
+|-------|------r lobortis orci
+
+=== "Ordered list"
+   |
 |`get`  |:material-check: Fetch resource|
 |`PUT`  |:material-check-all: Update res|
 
-->
+->r lobortis orci
 
-{{ read_csv('./data.csv') }}
+=== "Ordered list"
 
-->
 
 === "C"
 
@@ -72,11 +73,10 @@ Some more shit
     ``` c
     #include <stdio.h>
 
-    int main(void) {
-      printf("Hello world!\n");
-      return 0;
-    }
-    ```
+r lobortis orci
+
+=== "Ordered list"
+
 
 === "C++"
 
@@ -167,3 +167,91 @@ git clone git@github.com-account1:username/repo.git
 Replace `username` with your GitHub username and `repo` with your repository name. Use the correct Host alias for the account you want to use.
 
 This way, you can use multiple SSH keys for different GitHub accounts.
+
+### 关于tweak
+这个ubuntu上的改变全局的东西有点神奇,可以改字体,系统语言设置的更改还得`reboot`,不过现在结果还行.(half punctuations)
+
+
+
+#### 关于clash 
+要在Ubuntu 20.04上实现开机自动运行Clash代理,你可以按照以下步骤进行操作：
+
+1. **创建启动脚本**：
+   - 首先,创建一个启动脚本,用于启动Clash代理.你可以在 `/etc/init.d/` 目录下创建一个新的脚本文件,比如 `clash-start.sh`.
+
+2. **编辑启动脚本**：
+   - 使用文本编辑器（比如 `nano` 或 `vim`）编辑这个脚本文件.在文件中添加如下内容：
+     ```bash
+     #!/bin/bash
+     /path/to/your/clash-binary -d /path/to/your/config/directory
+     ```
+     请替换 `/path/to/your/clash-binary` 为你实际的 Clash 可执行文件路径,`/path/to/your/config/directory` 为你的配置文件目录.
+
+3. **添加可执行权限**：
+   - 添加可执行权限给你的启动脚本：
+     ```bash
+     sudo chmod +x /etc/init.d/clash-start.sh
+     ```
+
+4. **设置为开机自启动**：
+   - 使用 `update-rc.d` 命令将脚本添加到启动项中：
+     ```bash
+     sudo update-rc.d clash-start.sh defaults
+     ```
+
+5. **测试**：
+   - 现在你可以测试这个启动脚本是否能够正常运行.你可以重启你的计算机,然后检查 Clash 是否已经自动启动了.
+
+这样,每次系统启动时,Clash 代理都会自动运行.
+#### clash透明代理
+TUN 模式
+新版的 Clash Premium 内核支持 TUN 模式,且目前已支持 Linux 系统下的 auto-route 和 auto-detect-interface,无需手动设置转发表,可以方便快捷的实现 透明网关（旁路由） 的功能.
+
+首先需要下载 Clash Premium 版本,替换上面的 clash 文件.接着需要设置 Linux 系统,开启转发功能.编辑文件 /etc/sysctl.conf,添加以下内容：
+
+``` shell
+net.ipv4.ip_forward=1
+
+```
+保存退出后,执行以下命令使修改生效：
+
+``` shell
+sudo sysctl -p
+```
+
+然后接着需要关闭系统的 DNS 服务,使用以下命令：
+
+``` shell
+sudo systemctl stop systemd-resolved
+sudo systemctl disable systemd-resolved
+```
+关于代理环境下 DNS 解析行为的深入探讨,可以参见浅谈在代理环境中的 DNS 解析行为以及我有特别的 DNS 配置和使用技巧.
+
+接着需要设置 Clash 的配置文件,添加以下内容：
+
+```json
+dns:
+  enable: true
+  listen: 0.0.0.0:53
+  enhanced-mode: fake-ip
+  nameserver:
+    - 114.114.114.114
+  fallback:
+    - 8.8.8.8
+tun:
+  enable: true
+  stack: system # or gvisor
+  dns-hijack:
+    - 8.8.8.8:53
+    - tcp://8.8.8.8:53
+    - any:53
+    - tcp://any:53
+  auto-route: true # auto set global route
+  auto-detect-interface: true # conflict with interface-name
+  ```
+
+最后重启 Clash 服务即可,这样流量就会通过 TUN 接口转发,同时利用强大的分流规则,实现按需代理.也可以设置局域网内的网关地址和 DNS 服务器地址,实现透明网关.
+
+##### 为什么我的clash没有dashboard
+因为没有所以没有,我找到的 clash for linux 的版本是不带控制界面的,需要访问 这个 web 控制台 才能进行控制.后来为了方便访问,我就把他的包都给抓了下来,放在了本地的 nginx 上.
+

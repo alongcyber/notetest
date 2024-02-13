@@ -242,3 +242,136 @@ man 3 str<TAB><TAB>
 
 另外一个值得推荐的字符串处理函数是sscanf(), 它的功能和scanf()很类似, 不同的是sscanf()可以从字符串中读入格式化的内容, 使用它有时候可以很方便地实现字符串的解析. 如果你从来没有使用过它们, RTFM, 或者STFW.
 
+GNU的`readline`库提供了一种方便的方式来处理用户的输入，包括行编辑，历史记录和自动补全。以下是一些基本的使用方法：
+
+1. **初始化readline**：在使用readline之前，你需要先初始化它。这通常在程序开始时完成：
+
+    ```c
+    #include <readline/readline.h>
+    #include <readline/history.h>
+    ```
+
+2. **读取输入**：你可以使用`readline`函数来读取用户的输入。这个函数接受一个提示字符串作为参数，并返回用户输入的字符串。例如：
+
+    ```c
+    char* input = readline("Enter your command: ");
+    ```
+
+    用户可以使用readline的行编辑功能来修改他们的输入。当他们按下Enter键时，`readline`函数将返回他们输入的字符串。
+
+3. **处理历史记录**：你可以使用`add_history`函数来添加一个命令到历史记录中：
+
+    ```c
+    add_history(input);
+    ```
+
+    用户可以使用上下箭头键来浏览历史记录。
+
+4. **自动补全**：你可以使用`rl_completion_entry_function`和`rl_attempted_completion_function`来定制自动补全的行为。例如，你可以设置一个函数来提供可能的补全，或者改变补全的规则。
+
+5. **清理**：当你完成了readline的使用，你应该释放它返回的字符串：
+
+    ```c
+    free(input);
+    ```
+
+以上就是GNU readline的基本用法。请注意，readline库的功能非常强大，这里只是介绍了一些基本的用法。如果你想了解更多，你可以查阅readline的官方文档。
+
+#### 举例说明readline
+以下是一个使用GNU readline库的简单C程序示例。这个程序会提示用户输入命令，然后将命令添加到历史记录中，并打印出来。用户可以使用readline的行编辑和历史功能。
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <readline/readline.h>
+#include <readline/history.h>
+
+int main() {
+    char* input;
+
+    while(1) {
+        input = readline("Enter command: ");
+
+        if (!input) {
+            // EOF, exit loop
+            break;
+        }
+
+        printf("You entered: %s\n", input);
+
+        if (*input) {
+            add_history(input);
+        }
+
+        free(input);
+    }
+
+    return 0;
+}
+```
+
+在这个程序中，我们使用`readline`函数读取用户的输入。我们传递一个提示字符串"Enter command: "给`readline`函数，然后它会返回用户输入的字符串。(而且readline会打印提示字符串)
+
+我们检查返回的字符串是否为NULL，如果是NULL，那么我们就退出循环。否则，我们就打印出用户输入的字符串，并使用`add_history`函数将它添加到历史记录中。
+
+最后，我们使用`free`函数释放`readline`函数返回的字符串。
+
+要编译这个程序，你需要链接readline库。在gcc中，你可以使用`-lreadline`选项来做到这一点：
+
+```bash
+gcc -o my_program my_program.c -lreadline
+```
+nemu中的example
+
+```c
+/* We use the `readline' library to provide more flexibility to read from stdin. */
+static char* rl_gets() {
+  static char *line_read = NULL;
+
+  if (line_read) {
+    free(line_read);
+    line_read = NULL;
+  }
+
+  line_read = readline("(nemu) ");
+
+  if (line_read && *line_read) {
+    add_history(line_read);
+  }
+
+  return line_read;
+}
+
+```
+#### 关于strtok
+`strtok`是一个C语言库函数，用于在字符串中查找并分割出一系列的标记（tokens）。它的原型如下：
+
+```c
+char *strtok(char *str, const char *delim);
+```
+
+这个函数接受两个参数：一个是要分割的字符串`str`，另一个是包含分隔符的字符串`delim`。函数会在`str`中查找`delim`中的任何字符，并将其作为标记的结束。然后，它会在`str`中插入一个null字符来结束这个标记，并返回一个指向这个标记的指针。
+
+在连续的调用中，你可以传递NULL作为第一个参数，`strtok`会继续在上次的字符串上进行操作，查找下一个标记。
+
+例如，以下的代码会分割一个由空格分隔的字符串：
+
+```c
+char str[] = "Hello, how are you?";
+char *token = strtok(str, " ");
+while (token != NULL) {
+    printf("%s\n", token);
+    token = strtok(NULL, " ");
+}
+```
+
+这段代码会输出：
+
+```
+Hello,
+how
+are
+you?
+```
+
+请注意，`strtok`函数会修改它的输入字符串，所以如果你需要保留原始字符串，你应该在调用`strtok`之前创建一个副本。另外，`strtok`函数不是线程安全的，如果你在多线程环境中需要分割字符串，你应该使用`strtok_r`函数．
