@@ -195,3 +195,50 @@ In other words, the TEST1 symbol is not recognized as defined (because it is def
 
 Using the parenthesized form works for all parameterless macros (except TEST1, ie. those defined to themselves), and all single-parameter macros. If a macro expects multiple parameters, you need to use the correct number of commas, as otherwise (say, if you tried TRACE(TEST13(), "...")) you get a compile-time error: "macro TEST13 requires 3 arguments, only 1 given" or similar.
 使用括号形式适用于所有无参数宏（除了 TEST1 ，即。它们是自己定义的），以及所有单参数宏。如果一个宏需要多个参数，你需要使用正确数量的逗号，否则（比如说，如果你尝试 TRACE(TEST13(), "...") ）你会得到一个编译时错误：“宏 TEST13 需要3个参数，只有1个给定”或类似的。
+
+### 优雅的退出
+```c
+int is_exit_status_bad() {
+  int good = (nemu_state.state == NEMU_END && nemu_state.halt_ret == 0) ||
+    (nemu_state.state == NEMU_QUIT);
+  return !good;
+}
+```
+直接在cmd_q中修改成退出前把nemu_state.state改成NEMU_QUIT
+
+#### 代码中值得注意的地方
+最后我们聊聊代码中一些值得注意的地方.
+
++ 三个对调试有用的宏(在nemu/include/debug.h中定义)
+    + `Log()`是`printf()`的升级版, 专门用来输出调试信息, 同时还会输出使用`Log()`所在的源文件, 行号和函数. 当输出的调试信息过多的时候, 可以很方便地定位到代码中的相关位置
+    + `Assert()`是`assert()`的升级版, 当测试条件为假时, 在`assertion fail`之前可以输出一些信息
+    + `panic()`用于输出信息并结束程序, 相当于无条件的`assertion fail`
+
+代码中已经给出了使用这三个宏的例子, 如果你不知道如何使用它们, RTFSC.
+
++ 内存通过在nemu/src/memory/paddr.c中定义的大数组pmem来模拟. 在客户程序运行的过程中, 总是使用vaddr_read()和vaddr_write() (在nemu/src/memory/vaddr.c中定义)来访问模拟的内存. vaddr, paddr分别代表虚拟地址和物理地址. 这些概念在将来才会用到, 目前不必深究, 但从现在开始保持接口的一致性可以在将来避免一些不必要的麻烦.
+
+### 就是这么简单
+事实上, TRM(Technical Reference Model)的实现已经都蕴含在上述的介绍中了.
+
++ 存储器是个在`nemu/src/memory/paddr.c`中定义的大数组
++ PC和通用寄存器都在`nemu/src/isa/$ISA/include/isa-def.h`中的结构体中定义
++ 加法器在... 嗯, 这部分框架代码有点复杂, 不过它并不影响我们对TRM的理解, 我们还是在PA2里面再介绍它吧
++ TRM的工作方式通过`cpu_exec()`和`exec_once()`体现
+在NEMU中, 我们只需要一些很基础的C语言知识就可以理解最简单的计算机的工作方式, 真应该感谢先驱啊.
+
+### 解析命令
+
+为了让简易调试器易于使用, NEMU通过readline库与用户交互, 使用readline()函数从键盘上读入命令. 与gets()相比, readline()提供了"行编辑"的功能, 最常用的功能就是通过上, 下方向键翻阅历史记录. 事实上, shell程序就是通过readline()读入命令的. 关于readline()的功能和返回值等信息, 请查阅
+```shell
+man strtok
+```
+另外, cmd_help()函数中也给出了使用strtok()的例子. 事实上, 字符串处理函数有很多, 键入以下内容:
+
+``` shell
+man 3 str<TAB><TAB>
+```
+其中<TAB>代表键盘上的TAB键. 你会看到很多以str开头的函数, 其中有你应该很熟悉的strlen(), strcpy()等函数. 你最好都先看看这些字符串处理函数的manual page, 了解一下它们的功能, 因为你很可能会用到其中的某些函数来帮助你解析命令. 当然你也可以编写你自己的字符串处理函数来解析命令.
+
+另外一个值得推荐的字符串处理函数是sscanf(), 它的功能和scanf()很类似, 不同的是sscanf()可以从字符串中读入格式化的内容, 使用它有时候可以很方便地实现字符串的解析. 如果你从来没有使用过它们, RTFM, 或者STFW.
+
