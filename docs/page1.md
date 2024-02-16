@@ -253,5 +253,34 @@ tun:
 最后重启 Clash 服务即可,这样流量就会通过 TUN 接口转发,同时利用强大的分流规则,实现按需代理.也可以设置局域网内的网关地址和 DNS 服务器地址,实现透明网关.
 
 ##### 为什么我的clash没有dashboard
-因为没有所以没有,我找到的 clash for linux 的版本是不带控制界面的,需要访问 这个 web 控制台 才能进行控制.后来为了方便访问,我就把他的包都给抓了下来,放在了本地的 nginx 上.
+因为没有所以没有,我找到的 clash for linux 的版本是不带控制界面的,需要访问 这个 web 控制台 才能进行控制.后来为了方便访问,我就把他的包都给抓了下来,放在了本地的 nginx 上.得有个clash-ui(但是原项目已经被删掉sad)
 
+https://clash.razord.top/#/proxies
+
+[https://www.joeyne.cool/http/proxy/ubuntu-安装clash并配置开机启动/#clash-for-linux](https://www.joeyne.cool/http/proxy/ubuntu-安装clash并配置开机启动/#clash-for-linux)
+```shell
+
+# 进入下载目录（默认情况是下载到 ~/Downloads 目录，如果不是请进入到对应的下载目录）
+cd ~/Downloads
+# 解压
+gunzip clash-linux-amd64-v3-v1.15.1.gz
+# 重命名
+mv clash-linux-amd64-v3-v1.15.1 clash
+# 添加可执行权限(解压后是一个可执行文件，如果没有执行权限，需要手动添加）
+chmod +x clash
+# 复制clash 到/usr/bin/文件夹(这样在终端任何位置执行 clash 即可启动)
+sudo mv clash /usr/bin/
+```
+
+
+```shell
+[Unit]
+Description=clash
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/clash -f /home/along/desk/clash/config.yaml
+
+[Install]
+WantedBy=multi-user.target
+```
