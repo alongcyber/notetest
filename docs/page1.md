@@ -286,8 +286,30 @@ ExecStart=/usr/bin/clash -f /home/along/desk/clash/config.yaml
 [Install]
 WantedBy=multi-user.target
 ```
+## 关于git和github
+ssh的密钥只能来验证ssh协议相关的,你如果使用的是https的就不能验证.所以添加remote的时候要注意,如果是ssh的话,就要用ssh的地址,如果是https的话,就要用https的地址.
 
+### 更改或者添加git remote仓库的地址
+``` bash
+git remote set-url origin yours_github_repository_url
+git remote add origin yours_github_repository_url
+# 此处origin可以自行修改
+```
+### 强制推送
+如果你不在乎`main`分支的内容，并且你想要将`pa1`分支的内容强制推送到`main`分支，你可以使用以下命令：
 
+```bash
+# 切换到pa1分支
+git checkout pa1
+
+# 强制推送到远端的main分支
+git push origin +pa1:main
+# origin是远端仓库的名称，+pa1:main表示将本地的pa1分支强制推送到远端的main分支
+```
+
+这里的`+`符号表示强制推送。这将会覆盖远端的`main`分支，使其与你本地的`pa1`分支完全相同。
+
+请注意，强制推送是一种破坏性操作，它会永久地覆盖远端的`main`分支。在你执行这个操作之前，你应该确保你不需要`main`分支上的任何更改，或者你已经备份了这些更改。
 ## 一些关于markdown的记录
 作者：奚水溪流西
 链接：https://zhuanlan.zhihu.com/p/681840313
