@@ -130,3 +130,34 @@ $ git config --global github.token your_token_here
 ```
 3. 存储在密钥管理器中
 如果使用的是密码管理工具,例如Keychain（Mac OS）或Credential Manager（Windows）,可以将个人访问令牌存储在这些工具中.这样,令牌将被安全地存储,不易泄露,在需要时可以自动提取.
+
+## 如何在ubuntu20.04中更新vscode
+[如何在ubuntu20.04中更新vscode](https://www.joeyne.cool/http/vscode/如何在ubuntu20.04中更新vscode/#如何在ubuntu20.04中更新vscode)
+### 如何查看vscode的安装方式
+要查看在 Ubuntu 中安装的 Visual Studio Code (VSCode) 的方式,您可以执行以下步骤：
+
+1. **检查软件包管理器：** 如果您是通过包管理器（如apt）安装的VSCode,则可以通过以下命令查看：
+
+    ```bash
+    apt list --installed | grep code
+    ```
+
+    如果输出中显示有关`code`的条目,则说明您是通过包管理器安装的VSCode.
+
+2. **检查Snap包：** 如果您是通过Snap包管理器安装的VSCode,则可以使用以下命令：
+
+    ```bash
+    snap list | grep code
+    ```
+
+    如果输出中显示了与VSCode相关的条目,则说明您是通过Snap包安装的.
+
+3. **检查安装目录：** 如果您手动安装了VSCode,您可以查看其安装目录,通常情况下,它会安装在 `/usr/share/code` 或者 `~/.vscode` 目录下.您可以使用以下命令来查找：
+
+    ```bash
+    which code
+    ```
+
+    这会显示VSCode的可执行文件的位置.
+
+通过这些步骤,您可以确定您的系统中VSCode的安装方式.

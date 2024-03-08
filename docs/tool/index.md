@@ -3,3 +3,5 @@
 -[git](git)
 
 -[chatgpt](chatgpt)
+
+-[gdb](gdb)

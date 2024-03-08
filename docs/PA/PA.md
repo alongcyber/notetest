@@ -947,3 +947,214 @@ NAME
        All  regular  expression  searching  must be done via a compiled pattern buffer, thus regexec() must always be
        supplied with the address of a regcomp() initialized pattern buffer.
 + regexec()
+
+ ```bash
+       The regexec() function is used to match a null-terminated string against the precompiled pattern buffer preg.
+       The string is pointed to by string and the length of the string is len.  The eflags argument is used to deter‐
+       mine the type of matching that will be performed.
+  The regmatch_t structure which is the type of pmatch is defined in <regex.h>.
+
+           typedef struct {
+               regoff_t rm_so;
+               regoff_t rm_eo;
+           } regmatch_t;
+
+       Each  rm_so  element that is not -1 indicates the start offset of the next largest substring match within the string.  The relative rm_eo element indicates the end offset of the match, which is the offset of the first character after the matching text.
+```
+#### strtol()
+strtol()是C语言中的一个标准库函数,用于将字符串转换为长整型数.它的函数原型如下：
+
+```c
+long int strtol(const char *nptr, char **endptr, int base);
+```
+strtol()函数接受三个参数：`nptr`是一个指向待转换的字符串的指针,`endptr`是一个指向指针的指针,`base`是一个整数,表示转换时所使用的进制.
+
+strtol()函数会将`nptr`指向的字符串转换为一个长整型数,并返回这个数.如果`endptr`不是NULL,那么strtol()会将`nptr`中第一个无法转换的字符的指针赋值给`endptr`.如果`endptr`是NULL,那么strtol()会忽略无法转换的字符.
+
+`base`参数表示转换时所使用的进制.如果`base`为0,那么strtol()会根据字符串的格式自动判断进制.如果`base`不为0,那么strtol()会将字符串按照指定的进制进行转换.
+
+strtol()函数通常用于将字符串转换为整数,例如：
+
+```c
+char str[] = "12345";
+char *endptr;
+long int num = strtol(str, &endptr, 10);
+```
+在这个例子中,`strtol()`函数将字符串`"12345"`转换为一个长整型数,并将结果存入`num`中.如果`endptr`不是NULL,那么`strtol()`会将`str`中第一个无法转换的字符的指针赋值给`endptr`.
+
+总的来说,`strtol()`函数是一个用于将字符串转换为长整型数的标准库函数,它可以根据指定的进制进行转换,并且提供了一种方便的方法来处理转换失败的情况.
+
+#### strcmp()
+strcmp()是C语言中的一个标准库函数,用于比较两个字符串.它的函数原型如下：
+
+```c
+int strcmp(const char *str1, const char *str2);
+```
+strcmp()函数接受两个参数：`str1`和`str2`分别是待比较的两个字符串的指针.
+
+strcmp()函数会比较`str1`和`str2`指向的字符串,并返回一个整数.如果`str1`和`str2`相等,那么strcmp()会返回0.如果`str1`小于`str2`,那么strcmp()会返回一个小于0的整数.如果`str1`大于`str2`,那么strcmp()会返回一个大于0的整数.
+
+strcmp()函数通常用于比较字符串,例如：
+
+```c
+char str1[] = "abc";
+char str2[] = "def";
+int result = strcmp(str1, str2);
+```
+在这个例子中,`strcmp()`函数将字符串`"abc"`和`"def"`进行比较,并将结果存入`result`中.如果`result`的值为0,那么`str1`和`str2`相等.如果`result`的值小于0,那么`str1`小于`str2`.如果`result`的值大于0,那么`str1`大于`str2`.
+
+总的来说,`strcmp()`函数是一个用于比较字符串的标准库函数,它可以方便地比较两个字符串,并根据比较结果返回一个整数.
+
+#### 为什么要用const char *str
+const char *str是一个指向字符的指针,它指向的字符是常量,不能被修改.这样做的好处是可以确保函数不会意外地修改传入的字符串,从而提高了代码的可靠性和可维护性.
+
+#### strncmp()
+strncmp()是C语言中的一个标准库函数,用于比较两个字符串的前n个字符.它的函数原型如下：
+
+```c
+int strncmp(const char *str1, const char *str2, size_t n);
+```
+strncmp()函数接受三个参数：`str1`和`str2`分别是待比较的两个字符串的指针,`n`是一个无符号整数,表示要比较的字符数.
+
+strncmp()函数会比较`str1`和`str2`指向的字符串的前n个字符,并返回一个整数.如果`str1`和`str2`的前n个字符相等,那么strncmp()会返回0.如果`str1`的前n个字符小于`str2`的前n个字符,那么strncmp()会返回一个小于0的整数.如果`str1`的前n个字符大于`str2`的前n个字符,那么strncmp()会返回一个大于0的整数.
+
+strncmp()函数通常用于比较字符串的前n个字符,例如：
+
+```c
+char str1[] = "abc";
+char str2[] = "def";
+int result = strncmp(str1, str2, 2);
+```
+在这个例子中,`strncmp()`函数将字符串`"abc"`和`"def"`的前2个字符进行比较,并将结果存入`result`中.如果`result`的值为0,那么`str1`和`str2`的前2个字符相等.如果`result`的值小于0,那么`str1`的前2个字符小于`str2`的前2个字符.如果`result`的值大于0,那么`str1`的前2个字符大于`str2`的前2个字符.
+
+总的来说,`strncmp()`函数是一个用于比较字符串的前n个字符的标准库函数,它可以方便地比较两个字符串的前n个字符,并根据比较结果返回一个
+
+
+### 表达式扩展
+表达式扩展的含金量 => 本来是仅支持常数运算,但是这并不能用在后面的调试工程 => 要支持,对Hex的识别,对-1,+1,对指针解引用,对寄存器的识别.
+`+-*/`(二元运算),`+-`(单元运算),
+##### 对重复代码的再次抽象
+```c
+
+word_t eval(int p,int q, bool *sucess){
+  if(p>q){
+    // bad expression
+    *sucess = false;
+    return 0;
+  }
+  else if(p==q){
+    /* Single token.
+     * For now this token should be a number.
+     * Return the value of the number.
+     */
+    if(tokens[p].type != TK_NUM){
+      *sucess = false;
+      return 0;
+    }
+    return atoi(tokens[p].str);
+  }
+  else if(check_parentgeses(p,q)==true){
+    // remove the outermost brackets
+    return eval(p+1,q-1,sucess);
+  }else{
+    int op,val1,val2;
+    op = prioty(p,q);
+    if(op==-1){
+      *sucess = false;
+      return 0;
+    }
+    // val1 = eval(p,op-1,sucess);
+    // if(*sucess==false)return 0;
+    // val2 = eval(op+1,q,sucess);
+    // if(*sucess==false)return 0;
+    switch (tokens[op].type)
+    {
+    case '+':{
+      val1 = eval(p,op-1,sucess);
+      if(*sucess==false)return 0;
+      val2 = eval(op+1,q,sucess);
+      if(*sucess==false)return 0;
+      return val1+val2;
+    }
+    case '-':{
+      val1 = eval(p,op-1,sucess);
+      if(*sucess==false)return 0;
+      val2 = eval(op+1,q,sucess);
+      if(*sucess==false)return 0;
+      return val1-val2;
+    }
+    case '*':{
+      val1 = eval(p,op-1,sucess);
+      if(*sucess==false)return 0;
+      val2 = eval(op+1,q,sucess);
+      if(*sucess==false)return 0;
+      return val1*val2;}
+    case '/': {
+      val1 = eval(p,op-1,sucess);
+      if(*sucess==false)return 0;
+      val2 = eval(op+1,q,sucess);
+      if(*sucess==false)return 0;
+      if(val2==0){
+        *sucess = false;
+        return 0;
+      }
+      return val1 / val2;
+    }
+    case TK_NEG:{ 
+      // printf("has been here");
+      val2 = eval(op+1,q,sucess);
+      return -val2;
+    }
+    default: assert(0);
+    }
+  }
+  return 0;
+}
+
+```
+我采取的解决方法
+```c
+    // Makes it easier for the program 
+    //to run on machines with different word widths.
+    int len = MUXDEF(CONFIG_RV64, 8, 4);
+    int width = MUXDEF(CONFIG_RV64, 18, 10);
+    printf(ANSI_FMT("%#0*x: ", ANSI_FG_CYAN),width,expr);
+    for (j = 0; i < n && j < len; i++, j++) {
+      word_t w = vaddr_read(expr, len);
+      expr += len;
+      printf("%#0*x ",width,w);
+    }
+    puts(""); 
+```
+一开始我不理解为什么要写一个双层循环
+```shell
+(nemu) x 10 0x80000000
+0x80000000: 0x00000297 0x00028823 0x0102c503 0x00100073 
+0x80000010: 0xdeadbeef 0x65656565 0x65656565 0x65656565 
+0x80000020: 0x65656565 0x65656565 
+
+```
+要保证这样的输出,就需要一个双层循环,第一个循环是为了保证输出的行数,第二个循环是为了保证输出的列数,这样就可以保证输出的格式是正确的.
+##### 关于risc32=>4,riscv64=>8
+处理右结合的指针解引用(de+reference),需要注意的是
+```c
+static word_t calunary(word_t val,int op,bool *sucess){
+  switch (op)
+  {
+  case TK_DEREF:
+    return vaddr_read(val,4);
+  case TK_NEG:
+    return -val;
+  default:
+    *sucess = false;
+    return 0;
+  }
+}
+
+```
+
+
+
+### watch_point
+今天有点恼火,明天就可以开始PA2了,开心.
+(你说我去中东发展怎么样?)
