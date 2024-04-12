@@ -201,7 +201,7 @@ Using the parenthesized form works for all parameterless macros (except TEST1, i
 使用括号形式适用于所有无参数宏（除了 TEST1 ,即.它们是自己定义的）,以及所有单参数宏.如果一个宏需要多个参数,你需要使用正确数量的逗号,否则（比如说,如果你尝试 TRACE(TEST13(), "...") ）你会得到一个编译时错误：“宏 TEST13 需要3个参数,只有1个给定”或类似的.
 
 ### printf的含金量
-`printf`函数是C语言中用于格式化输出的函数，它有很多特殊的用法。以下是一些例子：
+`printf`函数是C语言中用于格式化输出的函数，它有很多特殊的用法.以下是一些例子：
 
 #### ysyx的例子
 
@@ -214,40 +214,40 @@ void isa_reg_display() {
 }
 
 ```
-这段代码是用于在C语言中打印CPU寄存器的值。它使用了`printf`函数，这是一个标准的C库函数，用于格式化输出到标准输出设备，通常是屏幕。
+这段代码是用于在C语言中打印CPU寄存器的值.它使用了`printf`函数，这是一个标准的C库函数，用于格式化输出到标准输出设备，通常是屏幕.
 
-`printf`函数的第一个参数是一个格式字符串，它定义了输出的格式。在这个例子中，格式字符串是`"%-4s: 0x%08x\n"`。
+`printf`函数的第一个参数是一个格式字符串，它定义了输出的格式.在这个例子中，格式字符串是`"%-4s: 0x%08x\n"`.
 
-`%-4s`表示一个字符串，`-`表示左对齐，`4`表示这个字符串的最小宽度是4。如果`regs[i]`的长度小于4，那么输出的字符串将被空格填充到4个字符。
+`%-4s`表示一个字符串，`-`表示左对齐，`4`表示这个字符串的最小宽度是4.如果`regs[i]`的长度小于4，那么输出的字符串将被空格填充到4个字符.
 
-`: 0x%08x`表示一个以十六进制形式输出的整数。`0x`是一个前缀，表示这个数是十六进制的。`%08x`表示这个整数至少有8位，如果不足8位，那么输出的字符串将被0填充到8位。
+`: 0x%08x`表示一个以十六进制形式输出的整数.`0x`是一个前缀，表示这个数是十六进制的.`%08x`表示这个整数至少有8位，如果不足8位，那么输出的字符串将被0填充到8位.
 
-`\n`是一个换行符，表示在输出这一行后换行。
+`\n`是一个换行符，表示在输出这一行后换行.
 
-`printf`函数的后续参数是要插入到格式字符串中的值。在这个例子中，[`regs[i]`]是要插入到`%-4s`的位置的字符串，`cpu.gpr[i]`是要插入到`%08x`的位置的整数。
+`printf`函数的后续参数是要插入到格式字符串中的值.在这个例子中，[`regs[i]`]是要插入到`%-4s`的位置的字符串，`cpu.gpr[i]`是要插入到`%08x`的位置的整数.
 
-总的来说，这段代码将会输出类似于`eax : 0x0000001f`这样的字符串，其中`eax`是寄存器的名字，`0x0000001f`是寄存器的值。
+总的来说，这段代码将会输出类似于`eax : 0x0000001f`这样的字符串，其中`eax`是寄存器的名字，`0x0000001f`是寄存器的值.
 
-1. **字段宽度和精度**：你可以在格式字符串中指定字段的宽度和精度。例如，`%5d`表示一个至少有5个字符宽的整数，`%.2f`表示一个小数点后有2位的浮点数。
+1. **字段宽度和精度**：你可以在格式字符串中指定字段的宽度和精度.例如，`%5d`表示一个至少有5个字符宽的整数，`%.2f`表示一个小数点后有2位的浮点数.
 
 ```c
 printf("%5d\n", 123);  // 输出："  123"
 printf("%.2f\n", 3.14159);  // 输出："3.14"
 ```
 
-2. **左对齐和右对齐**：默认情况下，`printf`函数会右对齐输出。你可以使用`-`标志来改变这个行为。例如，`%-5d`表示一个左对齐的至少有5个字符宽的整数。
+2. **左对齐和右对齐**：默认情况下，`printf`函数会右对齐输出.你可以使用`-`标志来改变这个行为.例如，`%-5d`表示一个左对齐的至少有5个字符宽的整数.
 
 ```c
 printf("%-5d\n", 123);  // 输出："123  "
 ```
 
-3. **填充字符**：默认情况下，`printf`函数会使用空格来填充字段。你可以使用`0`标志来改变这个行为。例如，`%05d`表示一个用0填充的至少有5个字符宽的整数。
+3. **填充字符**：默认情况下，`printf`函数会使用空格来填充字段.你可以使用`0`标志来改变这个行为.例如，`%05d`表示一个用0填充的至少有5个字符宽的整数.
 
 ```c
 printf("%05d\n", 123);  // 输出："00123"
 ```
 
-4. **十六进制和八进制**：你可以使用`%x`和`%o`来输出十六进制和八进制的整数。你还可以使用`#`标志来添加前缀。
+4. **十六进制和八进制**：你可以使用`%x`和`%o`来输出十六进制和八进制的整数.你还可以使用`#`标志来添加前缀.
 
 ```c
 printf("%x\n", 255);  // 输出："ff"
@@ -256,19 +256,19 @@ printf("%o\n", 255);  // 输出："377"
 printf("%#o\n", 255);  // 输出："0377"
 ```
 
-5. **指针**：你可以使用`%p`来输出指针的值。
+5. **指针**：你可以使用`%p`来输出指针的值.
 
 ```c
 int x = 0;
 printf("%p\n", &x);  // 输出类似于："0x7fffc72c4b3c"
 ```
 
-6. **字符串**：你可以使用`%s`来输出字符串。
+6. **字符串**：你可以使用`%s`来输出字符串.
 
 ```chttps://alongcyber.github.io/notetest/PA/PA/ 输出："Hello, world!"
 ```
 
-以上只是`printf`函数的一部分特殊用法。`printf`函数还有很多其他的特性和选项，你可以查阅C语言的文档来了解更多。
+以上只是`printf`函数的一部分特殊用法.`printf`函数还有很多其他的特性和选项，你可以查阅C语言的文档来了解更多.
 
 ### 优雅的退出
 
@@ -918,19 +918,19 @@ panic()用于输出信息并结束程序, 相当于无条件的`assertion fail`
 
 因此,使用-Werror -Wall选项可以确保代码的质量,并帮助开发人员发现潜在的问题,从而提高代码的可靠性和稳定性.
 
-如果你在头文件中实现函数，并且给这个函数添加了`static`修饰符，那么这个函数就变成了静态函数。静态函数在C语言中有特殊的含义，它表示这个函数只在定义它的文件中可见。
+如果你在头文件中实现函数，并且给这个函数添加了`static`修饰符，那么这个函数就变成了静态函数.静态函数在C语言中有特殊的含义，它表示这个函数只在定义它的文件中可见.
 
-这样做可以解决在头文件中实现函数可能出现的链接错误问题，因为每个包含这个头文件的源文件都会得到这个函数的一个私有拷贝，这些拷贝在链接阶段不会互相冲突。
+这样做可以解决在头文件中实现函数可能出现的链接错误问题，因为每个包含这个头文件的源文件都会得到这个函数的一个私有拷贝，这些拷贝在链接阶段不会互相冲突.
 
-然而，这仍然不能解决编译时间和代码重复的问题。每个包含这个头文件的源文件在编译时都会编译这个函数，这可能会导致编译时间增加。同时，每个源文件都会有这个函数的一份拷贝，这可能会导致生成的可执行文件的大小增加。
+然而，这仍然不能解决编译时间和代码重复的问题.每个包含这个头文件的源文件在编译时都会编译这个函数，这可能会导致编译时间增加.同时，每个源文件都会有这个函数的一份拷贝，这可能会导致生成的可执行文件的大小增加.
 
-此外，这种做法也可能会导致代码的可读性和可维护性降低。通常，我们期望在头文件中看到的是接口声明，而在源文件中看到的是接口的实现。如果在头文件中看到了函数的实现，这可能会让人感到困惑。
+此外，这种做法也可能会导致代码的可读性和可维护性降低.通常，我们期望在头文件中看到的是接口声明，而在源文件中看到的是接口的实现.如果在头文件中看到了函数的实现，这可能会让人感到困惑.
 
-因此，虽然在头文件中实现静态函数是可以的，但通常我们还是推荐在头文件中声明函数，在源文件中实现函数。
+因此，虽然在头文件中实现静态函数是可以的，但通常我们还是推荐在头文件中声明函数，在源文件中实现函数.
 
-定义成static inline的函数，可以在头文件中定义，这样可以避免多重定义错误。这种函数会被编译器内联，会增加编译时间。这种函数适合于短小的函数，例如一些简单的getter和setter函数。
+定义成static inline的函数，可以在头文件中定义，这样可以避免多重定义错误.这种函数会被编译器内联，会增加编译时间.这种函数适合于短小的函数，例如一些简单的getter和setter函数.
 
-什么叫做被编译器内联? 内联函数是一种特殊的函数，它的定义和声明都在一起，通常在头文件中。内联函数的特点是在调用它的地方直接展开，而不是像普通函数一样生成一个函数调用。这样可以减少函数调用的开销，提高程序的执行效率。
+什么叫做被编译器内联? 内联函数是一种特殊的函数，它的定义和声明都在一起，通常在头文件中.内联函数的特点是在调用它的地方直接展开，而不是像普通函数一样生成一个函数调用.这样可以减少函数调用的开销，提高程序的执行效率.
 
 #### 关于regex
 REGEX(3)                                      Linux Programmer's Manual                                      REGEX(3)
@@ -1156,5 +1156,226 @@ static word_t calunary(word_t val,int op,bool *sucess){
 
 
 ### watch_point
-今天有点恼火,明天就可以开始PA2了,开心.
-(你说我去中东发展怎么样?)
+请告诉我gdb中是如何使用监视点功能的
+在 GDB 中，你可以使用以下步骤来使用监视点（watchpoint）功能：
+
+1. **设置监视点**：使用 `watch` 命令来设置一个监视点.这个命令的格式是 `watch expr`，其中 `expr` 是你想要监视的表达式.当这个表达式的值发生改变时，程序的执行就会暂停.例如，如果你想要在变量 `x` 的值发生改变时暂停程序的执行，你可以使用以下命令：
+
+   ```
+   watch x
+   ```
+
+2. **查看监视点**：使用 `info watchpoints` 命令来查看当前设置的所有监视点.这个命令会显示一个列表，列出所有当前设置的监视点.对于每个监视点，它会显示监视点的编号，监视的表达式，以及表达式的当前值.
+
+3. **删除监视点**：使用 `delete` 命令来删除一个监视点.你需要在 `delete` 命令后面加上你想要删除的监视点的编号.例如，如果你想要删除编号为 1 的监视点，你可以使用以下命令：
+
+   ```
+   delete 1
+   ```
+
+   你也可以使用 `delete` 命令而不带任何参数来删除所有的断点和监视点.
+
+这就是在 GDB 中使用监视点功能的基本步骤.请注意，监视点是一种强大的工具，但是它们可能会显著地降低你的程序的运行速度，特别是当你监视的表达式涉及到复杂的计算或者大量的内存访问时.
+
+## PA2
+yemu模拟器
+```c
+#include <stdint.h>
+#include <stdio.h>
+
+#define NREG 4
+#define NMEM 16
+
+// 定义指令格式
+typedef union {
+  struct { uint8_t rs : 2, rt : 2, op : 4; } rtype;
+  struct { uint8_t addr : 4      , op : 4; } mtype;
+  uint8_t inst;
+} inst_t;
+//
+#define DECODE_R(inst) uint8_t rt = (inst).rtype.rt, rs = (inst).rtype.rs
+#define DECODE_M(inst) uint8_t addr = (inst).mtype.addr
+
+uint8_t pc = 0;       // PC, C语言中没有4位的数据类型, 我们采用8位类型来表示
+uint8_t R[NREG] = {}; // 寄存器
+uint8_t M[NMEM] = {   // 内存, 其中包含一个计算z = x + y的程序
+  0b11100110,  // load  6#     | R[0] <- M[y]
+  0b00000100,  // mov   r1, r0 | R[1] <- R[0]
+  0b11100101,  // load  5#     | R[0] <- M[x]
+  0b00010001,  // add   r0, r1 | R[0] <- R[0] + R[1]
+  0b11110111,  // store 7#     | M[z] <- R[0]
+  0b00010000,  // x = 16
+  0b00100001,  // y = 33
+  0b00000000,  // z = 0
+};
+
+int halt = 0; // 结束标志
+
+// 执行一条指令
+void exec_once() {
+  inst_t this;
+  this.inst = M[pc]; // 取指
+  switch (this.rtype.op) {
+  //  操作码译码       操作数译码           执行
+    case 0b0000: { DECODE_R(this); R[rt]   = R[rs];   break; }
+    case 0b0001: { DECODE_R(this); R[rt]  += R[rs];   break; }
+    case 0b1110: { DECODE_M(this); R[0]    = M[addr]; break; }
+    case 0b1111: { DECODE_M(this); M[addr] = R[0];    break; }
+    default:
+      printf("Invalid instruction with opcode = %x, halting...\n", this.rtype.op);
+      halt = 1;
+      break;
+  }
+  pc ++; // 更新PC
+}
+
+int main() {
+  while (1) {
+    exec_once();
+    if (halt) break;
+  }
+  printf("The result of 16 + 33 is %d\n", M[7]);
+  return 0;
+}
+```
+被PA2.1难哭了,看不明白这个巨量的宏(what can i say?),晚上回去把要交到邮箱的东西都填完.
+
+### GCC提供的标签地址
+
+使用了GCC提供的标签地址[扩展功能](https://gcc.gnu.org/onlinedocs/gcc/Labels-as-Values.html)
+
+### 告诉GCC总是尝试内联
+
+`__attribute__((always_inline))` 是GCC编译器的一个特性，用于告诉编译器总是尝试将某个函数内联.这是一个函数属性，通常在函数声明之前使用.
+
+内联函数是一种优化技术，它通过将函数调用替换为函数体的内容来减少函数调用的开销.然而，内联函数并不总是提高程序的性能，因为它可能会增加程序的大小，并可能影响指令缓存的效率.因此，编译器通常会根据函数的大小和复杂性来决定是否将其内联.
+
+然而，`__attribute__((always_inline))`属性告诉编译器无论函数的大小和复杂性如何，都应该尝试将其内联.这对于一些关键的、性能敏感的函数可能是有用的，但应该谨慎使用，以避免增加程序的大小和降低指令缓存的效率.
+
+请注意，这个属性是GCC特有的，不是标准C++的一部分.如果你的代码需要在其他编译器上编译，你可能需要找到一个等效的属性或者使用其他方法来控制函数的内联行为. 
+
+### 查看复杂工程中某个特定文件的编译过程
+
+在C语言中，宏是一种预处理器指令，用于在编译时将代码片段替换为指定的文本.宏展开是指将宏调用替换为宏定义的文本的过程.
+
+如果你想查看C文件中复杂宏的展开结果，可以使用GCC的预处理器选项`-E`.这个选项会让GCC在编译过程中只进行预处理，然后将预处理的结果输出到标准输出.
+
+例如，如果你有一个名为`main.c`的文件，你可以使用以下命令来查看宏的展开结果：
+
+```bash
+gcc -E main.c
+```
+
+这个命令会将`main.c`文件中的所有宏都展开，并将结果输出到控制台.如果你想将结果保存到一个文件中，你可以使用重定向：
+
+```bash
+gcc -E main.c > preprocessed.c
+```
+
+这个命令会将宏展开的结果保存到`preprocessed.c`文件中.
+
+对于复杂的工程文件，你仍然可以使用GCC的预处理器选项`-E`来查看宏的展开结果.但是，你可能需要指定一些额外的编译选项，比如头文件的路径、预定义的宏等.
+
+如果你使用的是make工具来构建你的项目，你可以修改Makefile，添加一个新的目标来生成预处理的文件.例如：
+
+```makefile
+.PHONY: preprocess
+preprocess:
+    gcc -E $(CFLAGS) main.c -o preprocessed.c
+```
+
+在这个例子中，`$(CFLAGS)`是一个变量，它包含了你的项目需要的所有编译选项.`main.c`是你想要预处理的文件，`preprocessed.c`是生成的预处理文件.
+
+然后，你可以使用`make preprocess`命令来生成预处理文件.
+
+如果你的项目使用的是其他构建工具（如CMake、Bazel等），你可能需要查阅相应的文档来了解如何生成预处理文件. 根据你想要展开的文件的复杂性，你可能需要调整编译选项和预处理器选项.
+
+#### make -nB 
+`make -n`或者`make --just-print`选项是用来显示make命令将要执行的操作，但是并不真正执行这些操作.这个选项通常用于查看make命令的执行过程，以便检查makefile文件是否正确配置.
+
+通过`make -nB | vim -`来定位某个特定文件的编译过程.
+
+```shell
+gcc -O2 -MMD -Wall -Werror -I/home/along/ysyx-workbench/nemu/include -I/home/along/ysyx-workbench/nemu/src/isa/riscv32/include -I/home/along/ysyx-workbench/nemu/src/engine/interpreter -O2  -Og -ggdb3  -DITRACE_COND=true -D__GUEST_ISA__=riscv32 -c -o /home/along/ysyx-workbench/nemu/build/obj-riscv32-nemu-interpreter/src/isa/riscv32/inst.o src/isa/riscv32/inst.c
+
+```
+把`-o`=>`-E`再把最后面加个`| vim -`经过简单的修改后可以很方便的看到宏展开的样子.
+
+
+```c
+  { const void ** __instpat_end = &&__instpat_end_;;
+  do { uint64_t key, mask, shift; pattern_decode("0000000 00001 00000 000 00000 11100 11", (sizeof("0000000 00001 00000 000 00000 11100 11") - 1), &key, &mask, &shift); 
+    if ((((uint64_t)((s)->isa.inst.val) >> shift) & mask) == key) { 
+      { 
+        decode_operand(s, &rd, &src1, &src2, &imm, TYPE_R); 
+        set_nemu_state(NEMU_END, s->pc, (cpu.gpr[check_reg_idx(10)])) ; 
+      }; 
+      goto *(__instpat_end); 
+    } 
+  } while (0);
+  do { uint64_t key, mask, shift; pattern_decode("0000000 00001 00000 000 00000 11100 11", (sizeof("0000000 00001 00000 000 00000 11100 11") - 1), &key, &mask, &shift); 
+    if ((((uint64_t)((s)->isa.inst.val) >> shift) & mask) == key) { 
+      { 
+        decode_operand(s, &rd, &src1, &src2, &imm, TYPE_N); 
+        set_nemu_state(NEMU_END, s->pc, (cpu.gpr[check_reg_idx(10)])) ; 
+      }; 
+      goto *(__instpat_end); 
+    } 
+  } while (0);
+  
+  do { uint64_t key, mask, shift; pattern_decode("??????? ????? ????? ??? ????? ????? ??", (sizeof("??????? ????? ????? ??? ????? ????? ??") - 1), &key, &mask, &shift); 
+    if ((((uint64_t)((s)->isa.inst.val) >> shift) & mask) == key) { 
+      { 
+        decode_operand(s, &rd, &src1, &src2, &imm, TYPE_N); 
+        invalid_inst(s->pc) ; 
+      }; 
+      goto *(__instpat_end); 
+    } 
+  } while (0);
+  
+  __instpat_end_: ; };
+
+  (cpu.gpr[check_reg_idx(0)]) = 0;
+
+  return 0;
+}
+
+int isa_exec_once(Decode *s) {
+  s->isa.inst.val = inst_fetch(&s->snpc, 4);
+  return decode_exec(s);
+}
+
+```
+
+### dummy
+
+```shell
+➜   make ARCH=$ISA-nemu ALL=dummy run
+# Building dummy-run [-nemu]
+/home/along/ysyx-workbench/abstract-machine/Makefile:30: *** Expected $ARCH in {loongarch32r-nemu mips32-nemu native riscv32e-nemu riscv32e-npc riscv32-nemu riscv64-nemu spike x86_64-qemu x86-nemu x86-qemu}, Got "-nemu".  Stop.
+ dummy
+[         dummy] FAIL!
+
+➜   make ARCH=riscv32-nemu ALL=dummy run  
+# Building dummy-run [riscv32-nemu]
++ CC tests/dummy.c
+cc1: error: ‘-march=rv32im_zicsr’: unsupported ISA subset ‘z’
+make[1]: *** [/home/along/ysyx-workbench/abstract-machine/Makefile:110: /home/along/ysyx-workbench/am-kernels/tests/cpu-tests/build/riscv32-nemu/tests/dummy.o] Error 1
+ dummy
+[         dummy] FAIL!
+
+
+```
+报错原因是riscv的交叉编译器版本老了.
+
+解决方法就是要么自行编译一个新的交叉编译器,要么直接下压缩包
+
+`/opt` 是 Linux 文件系统中的一个目录，通常用于存放可选的应用程序软件包。
+
+在 Linux 系统中，`/opt` 目录通常用于存放第三方软件或额外的软件包，这些软件包可能不是由系统的包管理器管理的。例如，一些商业软件，如 Oracle 数据库，可能会选择在 `/opt` 目录下安装。
+
+在 `/opt` 目录下安装软件可以使得系统的其他部分保持整洁，因为所有的文件都在 `/opt` 下的一个目录中，这使得卸载软件变得非常简单，只需要删除这个目录即可。
+
+总的来说，`/opt` 是一个用于存放可选软件包的目录。
+
+本来一直没有打算搜索报错的,最后还是搜索了报错.
