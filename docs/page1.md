@@ -109,6 +109,7 @@ r lobortis orci
 
 ## nav(导航)
 
+还是得手动修改mkdocs.yml中的目录,并不是自动检测新增文本文件来自动生成mkdocs.yml
 
 ## neovim
 +  四种mode`command`,`insert`,`normal`,`view`.
