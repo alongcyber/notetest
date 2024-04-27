@@ -5,3 +5,5 @@
 -[chatgpt](chatgpt)
 
 -[gdb](gdb)
+
+-[rust](rust)
