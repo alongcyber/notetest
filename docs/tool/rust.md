@@ -35,3 +35,20 @@ fn main() {
 当变量离开作用域时，Rust 为我们调用一个特殊的函数。这个函数叫做 `drop`，它的功能是释放我们的内存。Rust 在结尾的 `}` 处调用 `drop`。这里，Rust 在 `}` 处调用 `drop`，这样就可以在这个作用域中不再需要这个变量的时候释放这个内存。
 
 可变引用和不可变引用的区别在于是否可以修改引用的值
+
+## String slice
+字符串 slice 是 String 中一部分值的引用。String slice 的类型声明写作 `&str`。更具体地说，字符串 slice 是一个指向字符串开头的位置的指针，以及 slice 的长度。这也就是为什么字符串 slice 是一个引用：它没有所有权。
+slice依然是左闭右开,符合自然的习惯(好算长度,另外也符合逻辑,不会出现定义不能覆盖的情形)
+
+
+## rust 没有NUll
+在很多语言中，null 是一个值，代表没有值。在 Rust 中，我们使用 Option<T> 来表达一个值可能为空的情况。Option<T> 是一个枚举。Option<T> 有两个变量：Some(T) 和 None。Some(T) 保存一个 T 类型的值，而 None 代表没有值。
+```
+enum Option<T>{
+    Some(T),
+    None,
+}
+```
+这个枚举和泛型结合的方式是 Rust 的一个强大功能。Option<T> 使得 Rust 不需要 null 检查。Option<T> 有一个 expect 方法，如果 Option<T> 是 None，expect 会导致程序崩溃并显示 expect 中的信息。这个方法在调试时非常有用，但在生产环境中，你可能会选择其他处理 None 的方法。
+
+
