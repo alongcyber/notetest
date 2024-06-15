@@ -117,3 +117,5 @@ nav:
   - leetcode:
     - leetcode/index.md
     - 基础算法: leetcode/base.md
+  - life:
+    - life/index.md
