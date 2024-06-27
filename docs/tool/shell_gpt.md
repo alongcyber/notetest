@@ -69,7 +69,7 @@ Plum管理rime配置
 Ctrl+` 会切换输入方案,这个是默认的快捷键,我把这个快捷键改没了,这个是我习惯的(因为他这几个热键我都要用),在rime输入法的配置文件'default.yaml(/home/along/.config/ibus/rime/default.yaml)'中修改
 
 
-
+把ibus这颜色换成绿色,橙色太刺眼来.OK搞好了
 
 
 
