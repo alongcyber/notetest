@@ -7,3 +7,5 @@
 -[gdb](gdb)
 
 -[rust](rust)
+
+-[shell_gpt](shell_gpt)

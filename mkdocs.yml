@@ -127,6 +127,7 @@ nav:
     - chatgpt: tool/chatgpt.md
     - gdb: tool/gdb.md
     - rust: tool/rust.md
+		- shell_gpt: tool/shell_gpt.md
   - leetcode:
     - leetcode/index.md
     - 基础算法: leetcode/base.md
