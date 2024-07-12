@@ -139,7 +139,9 @@ $ git config --global github.token your_token_here
 1. **检查软件包管理器：** 如果您是通过包管理器（如apt）安装的VSCode,则可以通过以下命令查看：
 
     ```bash
-    apt list --installed | grep code
+    apt-get list --installed | grep code//warning警告了不稳定
+    
+    dpkg --list | grep code
     ```
 
     如果输出中显示有关`code`的条目,则说明您是通过包管理器安装的VSCode.
@@ -161,3 +163,4 @@ $ git config --global github.token your_token_here
     这会显示VSCode的可执行文件的位置.
 
 通过这些步骤,您可以确定您的系统中VSCode的安装方式.
+

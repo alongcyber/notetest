@@ -1379,3 +1379,35 @@ make[1]: *** [/home/along/ysyx-workbench/abstract-machine/Makefile:110: /home/al
 总的来说，`/opt` 是一个用于存放可选软件包的目录。
 
 本来一直没有打算搜索报错的,最后还是搜索了报错.
+
+### dummy运行
+```shell
+(nemu) s
+invalid opcode(PC = 0x80000000):
+	13 04 00 00 17 91 00 00 ...
+	00000413 00009117...
+There are two cases which will trigger this unexpected exception:
+1. The instruction at PC = 0x80000000 is not implemented.
+2. Something is implemented incorrectly.
+Find this PC(0x80000000) in the disassembling result to distinguish which case it is.
+
+If it is the first case, see
+       _                         __  __                         _ 
+      (_)                       |  \/  |                       | |
+  _ __ _ ___  ___ ________   __ | \  / | __ _ _ __  _   _  __ _| |
+ | '__| / __|/ __|______\ \ / / | |\/| |/ _` | '_ \| | | |/ _` | |
+ | |  | \__ \ (__        \ V /  | |  | | (_| | | | | |_| | (_| | |
+ |_|  |_|___/\___|        \_/   |_|  |_|\__,_|_| |_|\__,_|\__,_|_|
+
+for more details.
+
+If it is the second case, remember:
+* The machine is always right!
+* Every line of untested code is always wrong!
+
+0x80000000: 00 00 04 13 addi	s0, zero, 0
+[src/cpu/cpu-exec.c:121 cpu_exec] nemu: ABORT at pc = 0x80000000
+[src/cpu/cpu-exec.c:89 statistic] host time spent = 311 us
+[src/cpu/cpu-exec.c:90 statistic] total guest instructions = 1
+[src/cpu/cpu-exec.c:91 statistic] simulation frequency = 3,215 inst/s
+```
