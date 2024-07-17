@@ -1411,3 +1411,324 @@ If it is the second case, remember:
 [src/cpu/cpu-exec.c:90 statistic] total guest instructions = 1
 [src/cpu/cpu-exec.c:91 statistic] simulation frequency = 3,215 inst/s
 ```
+学习 RISC-V 的语义和指令格式是理解和使用这一现代指令集架构的关键。RISC-V 是一个开源、简洁、模块化的指令集架构，设计用于各种计算设备，从嵌入式系统到超级计算机都可以使用。以下是 RISC-V 的语义和指令格式的基本介绍：
+
+### RISC-V 指令集概述
+
+1. **简介**：
+   - RISC-V（发音为 "risk-five"）是一个基于精简指令集（RISC）原则的开放指令集架构（ISA）。
+   - 设计简洁，包含了基本的指令集和标准的扩展，可以根据需求进行自定义扩展。
+
+2. **指令格式**：
+   - RISC-V 指令有固定的长度（通常为 32 位），可以分为不同的类型：R 类型（寄存器-寄存器操作）、I 类型（立即数操作）、S 类型（存储操作）、B 类型（分支操作）、U 类型（无条件跳转）、J 类型（条件跳转）等。
+
+3. **寄存器**：
+   - RISC-V 使用整数寄存器（通常有 32 个，命名为 x0 到 x31），以及一些特殊用途的寄存器（如程序计数器 PC、栈指针 SP 等）。
+
+4. **指令语义**：
+   - 每条指令都有明确定义的操作，涉及寄存器之间的数据传输、算术运算、逻辑运算、内存访问和控制流操作等。
+   - 指令的语义由操作码（opcode）和操作数（operands）组成，操作数可以是寄存器、立即数或内存地址。
+
+### 指令格式示例
+
+#### R 类型指令（寄存器-寄存器操作）
+
+R 类型指令用于寄存器之间的操作，如加法、减法等。
+
+```
+  31    25 24   20 19   15 14   12 11    7 6     0
++-------+-------+-------+-------+-------+-------+
+| funct7|  rs2  |  rs1  | funct3|   rd  | opcode|
++-------+-------+-------+-------+-------+-------+
+```
+
+- `opcode`: 操作码，指定操作类型（如算术运算、逻辑运算等）。
+- `rd`: 目标寄存器。
+- `rs1`、`rs2`: 源寄存器。
+- `funct3`、`funct7`: 针对操作的具体功能码。
+
+#### I 类型指令（立即数操作）
+
+I 类型指令用于将立即数与寄存器内容进行操作，如加载、存储、移位等。
+
+```
+  31    20 19   15 14   12 11    7 6     0
++-------+-------+-------+-------+-------+-------+
+| imm[11:0] |  rs1  | funct3|   rd  | opcode|
++-------+-------+-------+-------+-------+-------+
+```
+
+- `opcode`: 操作码。
+- `rd`: 目标寄存器。
+- `rs1`: 源寄存器。
+- `imm[11:0]`: 12 位的立即数。
+
+#### S 类型指令（存储操作）
+
+S 类型指令用于存储数据到内存。
+
+```
+  31    25 24   20 19   15 14   12 11    7 6     0
++-------+-------+-------+-------+-------+-------+
+| imm[11:5]|  rs2  |  rs1  | funct3| imm[4:0]| opcode|
++-------+-------+-------+-------+-------+-------+
+```
+
+- `opcode`: 操作码。
+- `rs1`、`rs2`: 相关寄存器。
+- `imm[11:0]`: 12 位的立即数，用于指定存储的偏移量。
+
+### 学习资源推荐
+
+如果你希望深入了解 RISC-V 的语义和指令格式，以下资源可能会对你有所帮助：
+
+- [RISC-V 指令集手册](https://riscv.org/technical/specifications/)
+- [RISC-V 教育基金会的教育资源](https://riscv.org/education/)
+- RISC-V 相关的开放课程和在线学习平台（如 Coursera、edX 上的相关课程）
+
+通过这些资源，你可以系统地学习和理解 RISC-V 的指令集架构、指令格式以及操作语义，为进一步的学习和开发应用打下坚实的基础。
+
+### ysyx-workbench/am-kernels/tests/cpu-tests/makefile
+
+`make ARCH=$ISA-nemu ALL=dummy `
+
+#### >.result
+
+在 Makefile 中，`$(shell > $(RESULT))` 这行代码使用了 GNU Make 的 `$(shell ...)` 函数。该函数允许在 Makefile 中执行任意的 shell 命令，并将其输出作为变量值。具体来说，这里执行的命令是 `> .result`，它的作用是创建一个空的 `.result` 文件（如果文件已经存在，则清空它）。
+
+##### `$(shell ...)` 函数
+
+`$(shell ...)` 函数的语法如下：
+```makefile
+$(shell command)
+```
+
+- `command` 是要执行的 shell 命令。
+- `$(shell ...)` 函数执行 `command` 并将其输出作为返回值。
+
+##### 创建空文件
+
+在 shell 中，单独使用重定向操作符 `>` 可以创建一个新文件或清空一个已存在的文件。例如：
+```sh
+> .result
+```
+这条命令的效果是创建一个名为 `.result` 的空文件，如果 `.result` 文件已经存在，则会清空它的内容。
+
+在 Makefile 中使用 `$(shell ...)` 执行这个命令的目的是确保在开始编译之前，结果文件 `.result` 是空的。这样可以避免将新编译的结果与之前的结果混在一起。
+
+在 Makefile 中，`$(RESULT)` 是一个变量，用于存储编译和运行结果的文件名。在前面的 Makefile 示例中，它被定义为：
+
+```makefile
+RESULT = .result
+$(shell > $(RESULT))
+```
+
+`$(RESULT)` 变量的作用是记录每个测试文件的编译和运行结果。这种做法可以让你在编译多个测试文件后查看它们的结果，而不需要逐个查看编译输出。
+
+### 详细说明
+
+1. **变量定义**：
+   ```makefile
+   RESULT = .result
+   ```
+
+   这行代码将 `RESULT` 变量定义为 `.result`，表示结果文件的名称是 `.result`。
+
+2. **初始化结果文件**：
+   ```makefile
+   $(shell > $(RESULT))
+   ```
+
+   这行代码使用 `$(shell ...)` 函数执行 shell 命令 `> .result`，这会创建一个空的 `.result` 文件（如果文件已经存在，则清空它）。这样可以确保每次运行 Makefile 时，结果文件都是空的，并且不会包含上次运行的结果。
+
+3. **记录编译结果**：
+   ```makefile
+   @if make -s -f $@ ARCH=$(ARCH) $(MAKECMDGOALS); then \
+       printf "[%14s] $(COLOR_GREEN)PASS!$(COLOR_NONE)\n" $* >> $(RESULT); \
+   else \
+       printf "[%14s] $(COLOR_RED)FAIL!$(COLOR_NONE)\n" $* >> $(RESULT); \
+   fi
+   ```
+
+   - `printf "[%14s] $(COLOR_GREEN)PASS!$(COLOR_NONE)\n" $* >> $(RESULT);`：如果编译成功，打印一行包含 "PASS!" 的信息，并追加到 `.result` 文件中。
+   - `printf "[%14s] $(COLOR_RED)FAIL!$(COLOR_NONE)\n" $* >> $(RESULT);`：如果编译失败，打印一行包含 "FAIL!" 的信息，并追加到 `.result` 文件中。
+
+   这段代码是一个在 Makefile 文件中定义的命令，用于执行构建过程，并根据构建结果输出相应的信息到一个结果文件中。让我们逐步解析这段代码的功能和组成部分。
+
+首先，这段代码使用了 `@` 前缀，这在 Makefile 中用来表示执行命令时，不将该命令本身输出到控制台。这样做可以让输出结果更加清晰，只显示我们关心的信息。($@表示targets,$^表示prerequisites,不如直接去看makefile manual)
+
+接下来，使用 `if` 语句来判断 `make -s -f $@ ARCH=$(ARCH) $(MAKECMDGOALS)` 命令的执行结果。这里的 `-s` 选项表示在执行时不显示命令本身，`-f $@` 表示使用当前目标（`$@`）指定的 Makefile 文件。`ARCH=$(ARCH)` 是向 make 命令传递的一个变量，它的值取决于当前环境或者是在命令行中指定的值。`$(MAKECMDGOALS)` 是一个特殊的变量，包含了 make 命令行中指定的目标列表。
+
+如果 `make` 命令执行成功（即返回值为 0），则执行 `then` 分支，使用 `printf` 命令将格式化的成功信息追加到 `$(RESULT)` 指定的文件中。这里的 `[%14s]` 是 `printf` 格式字符串，用于将输出的字符串格式化为宽度为 14 个字符的字符串，如果不足则左侧填充空格。`$*` 代表了传递给当前规则的所有参数，`$(COLOR_GREEN)` 和 `$(COLOR_NONE)` 是在 Makefile 中定义的变量，用于设置文本颜色，以便在输出中高亮显示成功信息。
+
+如果 `make` 命令执行失败（即返回值非 0），则执行 `else` 分支，使用 `printf` 命令将格式化的失败信息追加到 `$(RESULT)` 指定的文件中。失败信息的格式与成功信息相同，不同之处在于使用了 `$(COLOR_RED)` 变量来设置文本颜色，以便在输出中高亮显示失败信息。
+
+总的来说，这段代码通过执行另一个 Makefile 并检查其返回值，来决定是输出构建成功还是失败的信息，并将这些信息以特定的格式追加到一个结果文件中，同时通过颜色的变化使得结果一目了然。
+
+4. **显示结果**：
+   ```makefile
+   run: all
+       @cat $(RESULT)
+       @rm $(RESULT)
+   ```
+
+   - `@cat $(RESULT)`：显示 `.result` 文件的内容，列出所有测试文件的编译和运行结果。
+   - `@rm $(RESULT)`：删除 `.result` 文件，清理临时文件。
+
+#### 示例
+
+假设你有两个测试文件 `tests/dummy.c` 和 `tests/sample.c`，并且你运行 `make ARCH=$ISA-nemu ALL="dummy sample" run`。假设 `dummy.c` 编译成功而 `sample.c` 编译失败，`.result` 文件的内容可能如下：
+
+```
+        dummy PASS!
+       sample FAIL!
+```
+
+在 `run` 目标中，`cat .result` 将显示上述内容，`rm .result` 则会删除 `.result` 文件。
+
+#### 总结
+
+`$(RESULT)` 是一个用于存储和显示编译和运行结果的临时文件名变量。它的定义和使用确保了每次运行 Makefile 时都能记录每个测试文件的结果，并在最终输出结果后清理该文件。
+
+
+### PA2.1 指令实现
+#### 教训 
+YSYX的这个开放架构设计之道有一点没写好(例如结构太混乱了,介绍基本指令格式的时候,U型指令的立即数20位左移都没说,就开始介绍减少扇形面积之类的知识看得很一头雾水,怪不得很多blog说不如直接去看官方手册,这点确实,唉)
+
+指令实现就是纯抄手册,补全框架代码里的空白,这个没什么好说的,就是要多看手册,多看手册,多看手册.(例如取立即数的几个imm,)难绷拿copilot生成的取立即数宏居然是错的,当时偷懒了没去看手册,结果浪费了很多时间测试出这个问题.
+
+#### gdb条件调试
+
+mersenne测试未通过,需要使用gdb进行调试.
+先break到大概地方再使用,condition来完成条件调试.
+(笨办法自然是s N手动找出来那个step会abortion的地方)
+
+```shell
+(gdb) break exec_once
+(gdb) condition 1 (s->dnpc == 0x7ffffcdc)
+```
+
+#### make -nB | vim -
+`sed` `grep` ()
+``` vim编辑命令
+# 只保留gcc或g++开头的行
+:%!grep "^\(gcc\|g++\)"
+
+# 将环境变量$NEMU_HOME所指示字符串替换为$NEMU_HOME
+:%!sed -e "s+$NEMU_HOME+\$NEMU_HOME+g"
+
+# 将$NEMU_HOME/build/obj-riscv32-nemu-interpreter替换为$OBJ_DIR
+:%s+\$NEMU_HOME/build/obj-riscv32-nemu-interpreter+$OBJ_DIR+g
+
+# 将-c之前的内容替换为$CFLAGS
+:%s/-O2.*=riscv32/$CFLAGS/g
+
+# 将最后一行的空格替换成换行并缩进两格
+:$s/  */\r  /g
+
+```
+
+以下是你列出的几条 Vim 编辑命令的解释及使用场景：
+
+1. **只保留 `gcc` 或 `g++` 开头的行**：
+    ```vim
+    :%!grep "^\(gcc\|g++\)"
+    ```
+    这个命令使用 `grep` 工具筛选出当前文件中所有以 `gcc` 或 `g++` 开头的行。`%` 表示整个文件，`!` 表示执行外部命令，`grep "^\(gcc\|g++\)"` 用于匹配行首为 `gcc` 或 `g++` 的行。
+
+2. **将环境变量 `$NEMU_HOME` 所指示字符串替换为 `$NEMU_HOME`**：
+    ```vim
+    :%!sed -e "s+$NEMU_HOME+\$NEMU_HOME+g"
+    ```
+    这个命令使用 `sed` 工具将文件中所有 `$NEMU_HOME` 的值替换为字符串 `\$NEMU_HOME`。`s+old+new+g` 是 `sed` 的替换命令，其中 `+` 是分隔符，可以根据需要选择合适的分隔符。
+
+3. **将 `$NEMU_HOME/build/obj-riscv32-nemu-interpreter` 替换为 `$OBJ_DIR`**：
+    ```vim
+    :%s+\$NEMU_HOME/build/obj-riscv32-nemu-interpreter+$OBJ_DIR+g
+    ```
+    这个命令使用 Vim 的替换命令将文件中所有 `$NEMU_HOME/build/obj-riscv32-nemu-interpreter` 替换为 `$OBJ_DIR`。`%` 表示整个文件，`s` 是替换命令。
+
+4. **将 `-c` 之前的内容替换为 `$CFLAGS`**：
+    ```vim
+    :%s/-O2.*=riscv32/$CFLAGS/g
+    ```
+    这个命令使用 Vim 的替换命令，将文件中 `-O2` 到 `=riscv32` 之间的内容替换为 `$CFLAGS`。`%` 表示整个文件，`s` 是替换命令。
+
+5. **将最后一行的空格替换成换行并缩进两格**：
+    ```vim
+    :$s/  */\r  /g
+    ```
+    这个命令使用 Vim 的替换命令，将最后一行中的每个空格段替换为换行符并在新行开始处缩进两格。`$` 表示最后一行，`s` 是替换命令，`\r` 表示换行符，`  ` 表示两个空格。
+
+`sed` 和 `grep` 是两个在 Unix/Linux 环境中广泛使用的文本处理工具。它们有不同的用途和功能，下面是对它们的详细介绍：
+
+##### `grep`（Global Regular Expression Print）
+
+`grep` 是一个用于搜索文本的工具，它通过匹配正则表达式来查找文本中的特定模式。`grep` 可以用于在文件中搜索特定的字符串或模式，并输出匹配的行。
+
+**基本用法**：
+```sh
+grep [OPTIONS] PATTERN [FILE...]
+```
+
+**常用选项**：
+- `-i`：忽略大小写。
+- `-v`：反转匹配，显示不匹配的行。
+- `-r`：递归搜索目录。
+- `-l`：仅显示包含匹配行的文件名。
+- `-n`：显示匹配行的行号。
+
+**示例**：
+```sh
+# 在文件example.txt中搜索包含字符串'pattern'的行
+grep 'pattern' example.txt
+
+# 在当前目录及其子目录中递归搜索包含字符串'pattern'的文件
+grep -r 'pattern' .
+```
+
+##### `sed`（Stream Editor）
+
+`sed` 是一个流编辑器，用于对文本进行过滤和转换。`sed` 可以对文本进行插入、删除、替换和其他操作，通常用于处理文件中的文本数据。
+
+**基本用法**：
+```sh
+sed [OPTIONS] 'script' [FILE...]
+```
+
+**常用选项**：
+- `-e script`：添加要执行的脚本。
+- `-f script-file`：从脚本文件中读取命令。
+- `-n`：抑制自动打印，只有在脚本中使用`p`命令时才打印行。
+- `-i`：直接编辑文件，而不是输出到标准输出。
+
+**常用命令**：
+- `s/pattern/replacement/`：替换匹配的模式。
+- `d`：删除行。
+- `p`：打印行。
+- `a\text`：在当前行之后插入文本。
+- `i\text`：在当前行之前插入文本。
+
+**示例**：
+```sh
+# 将文件example.txt中的所有'old'替换为'new'
+sed 's/old/new/g' example.txt
+
+# 删除文件example.txt中的第2行
+sed '2d' example.txt
+
+# 在文件example.txt的第3行后插入'this is a new line'
+sed '3a\this is a new line' example.txt
+```
+
+### `grep` 和 `sed` 的联合使用
+
+`grep` 和 `sed` 可以结合使用，以实现更强大的文本处理功能。例如，先使用 `grep` 筛选出特定的行，然后用 `sed` 对这些行进行进一步的处理。
+
+**示例**：
+```sh
+# 先用grep找出包含'pattern'的行，再用sed将'old'替换为'new'
+grep 'pattern' example.txt | sed 's/old/new/g'
+```
+
+通过 `grep` 和 `sed` 的组合，能够高效地进行复杂的文本处理任务。
