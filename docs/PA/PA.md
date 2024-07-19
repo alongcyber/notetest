@@ -1677,7 +1677,7 @@ grep [OPTIONS] PATTERN [FILE...]
 - `-r`：递归搜索目录。
 - `-l`：仅显示包含匹配行的文件名。
 - `-n`：显示匹配行的行号。
-
+- `-E`: 使用扩展正则表达式。
 **示例**：
 ```sh
 # 在文件example.txt中搜索包含字符串'pattern'的行
@@ -1732,3 +1732,197 @@ grep 'pattern' example.txt | sed 's/old/new/g'
 ```
 
 通过 `grep` 和 `sed` 的组合，能够高效地进行复杂的文本处理任务。
+
+#### :tabnew命令
+`:tabnew` 命令用于在 Vim 编辑器中打开一个新的标签页。在 Vim 中，标签页是一种方便的多文件管理方式，可以在同一个 Vim 实例中同时编辑多个文件。
+
+`:tabnew` 是 Vim 编辑器中的一个命令，用于在新标签页中打开文件。标签页允许用户在多个文件之间切换，同时保持每个文件的打开状态，从而提高多任务处理的效率。
+
+##### 基本用法
+
+```vim
+:tabnew [filename]
+```
+
+- `:tabnew`：打开一个空的标签页。
+- `:tabnew filename`：在一个新标签页中打开指定的文件。
+
+##### 示例
+
+1. **打开一个空标签页**：
+    ```vim
+    :tabnew
+    ```
+
+2. **在新标签页中打开文件**：
+    ```vim
+    :tabnew myfile.txt
+    ```
+
+##### 标签页操作
+
+以下是一些常用的标签页操作命令：
+
+- `:tabnext` 或 `:tabn`：切换到下一个标签页。
+- `:tabprevious` 或 `:tabp`：切换到上一个标签页。
+- `:tabfirst`：切换到第一个标签页。
+- `:tablast`：切换到最后一个标签页。
+- `:tabclose` 或 `:tabc`：关闭当前标签页。
+- `:tabs`：列出所有打开的标签页。
+
+##### 快捷键操作
+
+Vim 还提供了快捷键来方便地操作标签页：
+
+- `gt`：切换到下一个标签页。
+- `gT`：切换到上一个标签页。
+- `{N}gt`：切换到第 N 个标签页（例如，`3gt` 切换到第三个标签页）。
+
+使用标签页功能，可以在 Vim 中更加高效地管理和编辑多个文件。
+
+#### #功能
+`#` 是 Vim 编辑器中的一个快捷键，用于在当前文件中查找光标所在位置的单词，并跳转到下一个匹配的位置。这个功能通常用于快速定位和查找文本中的关键字。
+
+`xargs` 是一个非常有用的 Unix 命令，用于将输入转换为命令行参数。它允许你将标准输入的数据传递给其他命令，特别适用于处理长列表的文件或其他项目。下面是对 `xargs` 的详细介绍：
+
+#### xargs基本语法
+```bash
+xargs [options] [command [initial-arguments]]
+```
+
+#### 主要功能
+`xargs` 读取标准输入并将其分割成一组参数，然后将这些参数传递给指定的命令。
+
+#### 主要选项
+- `-0`：输入项目以空字符（null character）分隔，常用于与 `find -print0` 搭配使用。
+- `-d delimiter`：自定义定界符，分割输入项目。
+- `-I replace-str`：定义替换字符串，指定每次替换输入中的每个参数。
+- `-n number`：指定每次传递给命令的参数数目。
+- `-P max-procs`：指定同时运行的最大进程数（并行执行）。
+- `-L max-lines`：指定每次读取的输入行数。
+
+#### 使用示例
+
+1. **简单示例**：
+    ```bash
+    echo "file1.txt file2.txt file3.txt" | xargs rm
+    ```
+    这个命令会删除 `file1.txt`、`file2.txt` 和 `file3.txt`。
+
+2. **结合 `find` 使用**：
+    ```bash
+    find . -name "*.log" | xargs rm
+    ```
+    这个命令会找到当前目录及其子目录下的所有 `.log` 文件并删除它们。
+
+3. **处理带空格的文件名**：
+    ```bash
+    find . -name "*.log" -print0 | xargs -0 rm
+    ```
+    `-print0` 选项使 `find` 输出以 null 字符分隔的文件名，`xargs -0` 能正确处理这些文件名，即使它们包含空格或换行符。
+
+4. **限制每次命令行的参数数量**：
+    ```bash
+    find . -name "*.txt" | xargs -n 5 cp -t /backup
+    ```
+    这个命令每次会传递 5 个文件给 `cp` 命令，将它们复制到 `/backup` 目录。
+
+5. **并行执行**：
+    ```bash
+    find . -name "*.log" | xargs -P 4 gzip
+    ```
+    这个命令会使用最多 4 个并行进程来压缩找到的 `.log` 文件。
+
+6. **使用替换字符串**：
+    ```bash
+    echo "file1 file2 file3" | xargs -I {} mv {} /new/location
+    ```
+    这个命令会将 `file1`、`file2` 和 `file3` 移动到 `/new/location` 目录，`{}` 会被每个文件名替换。
+
+#### 总结
+`xargs` 是一个强大的工具，能显著提高处理批量文件或参数的效率。通过将标准输入转换为命令行参数，它在许多脚本和自动化任务中扮演着重要角色。
+
+### 取除
+在正则表达式中，符号 `^` 有两个主要作用，具体取决于它所在的位置：
+
+#### 1. 行首匹配符
+
+当 `^` 位于正则表达式的开头时，它表示匹配行的开头。也就是说，`^pattern` 只会匹配那些以 `pattern` 开头的行。
+
+示例
+
+- **匹配以 "hello" 开头的行**：
+  ```bash
+  grep "^hello" file.txt
+  ```
+  例如，文件 `file.txt` 中有以下内容：
+  ```
+  hello world
+  say hello
+  hello there
+  ```
+  只有第一行和第三行会被匹配。
+
+- **匹配以数字开头的行**：
+  ```bash
+  grep "^[0-9]" file.txt
+  ```
+  例如，文件 `file.txt` 中有以下内容：
+  ```
+  1. This is a test.
+  This is another test.
+  42 is the answer.
+  ```
+  只有第一行和第三行会被匹配。
+
+#### 2. 否定字符集
+
+当 `^` 位于方括号 `[]` 中的开头时，它表示否定字符集。也就是说，`[^abc]` 表示匹配任何不在 `abc` 之内的字符。
+
+
+- **匹配不包含元音字母的字符**：
+  ```bash
+  grep "[^aeiou]" file.txt
+  ```
+  例如，文件 `file.txt` 中有以下内容：
+  ```
+  apple
+  banana
+  cherry
+  ```
+  每一行都会匹配，因为每行都有至少一个非元音字母。
+
+- **匹配不包含数字的字符**：
+  ```bash
+  grep "[^0-9]" file.txt
+  ```
+  例如，文件 `file.txt` 中有以下内容：
+  ```
+  1234
+  abcd
+  a1b2c3
+  ```
+  第二行和第三行会被匹配，因为它们包含非数字字符。
+
+
+- `^pattern`：匹配行的开头。
+- `[^chars]`：匹配不在 `chars` 内的任意字符。
+
+这些规则使得 `^` 在正则表达式中非常有用，可以用于匹配行的特定位置或排除特定字符集。
+
+#### nemu中的grep
+
+```shell
+find . -name "*.[ch]" | grep -E "^\./(src|include)" | \
+  grep -E -v "^\./include/config" | grep -v "mips32\|riscv64\|loongarch32r" | wc
+find . -name "*.[ch]" | grep -E "^\./(src|include)" | \
+  grep -E -v "^\./include/config" | grep -v "mips32\|riscv64\|loongarch32r" | xargs wc
+
+// wc (print newline,word,and the byte counts for each file)
+```
+### SEXT宏的作用
+`SEXT` 宏的作用是将一个有符号数的低位扩展为更高位，以保持其符号位不变。在计算机系统中，有符号数通常使用补码表示，即最高位为符号位，0 表示正数，1 表示负数。当需要将一个低位有符号数扩展为更高位时，需要保持符号位不变，即将符号位复制到更高位。(copilot说的)
+
+其实这些值存在内存里都是32位,只是在显示的时候显示成若干位,所以需要进行符号扩展.
+
+
