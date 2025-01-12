@@ -1,5 +1,7 @@
 # 建站的记录
 
+打算还是迁移到主仓库了
+https://github.com/alongcyber/notetest.git
 
 ## Another heading
 
