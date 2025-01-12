@@ -28,13 +28,13 @@ theme:
       toggle:
         icon: material/toggle-switch-off-outline
         name: Switch to dark mode
-      primary: indigo 
+      primary: teal
       accent: blue
     - scheme: slate
       toggle:
         icon: material/toggle-switch
         name: Switch to light mode
-      primary: indigo
+      primary: teal
       accent: lime
 
 #代码高亮
@@ -116,7 +116,7 @@ nav:
   - CSAPP:
     - csapp/index.md
     - bomblab: csapp/csapp.md
-
+    - cs144: csapp/cs144.md
   - PA:
     - PA/index.md
     - PA: PA/PA.md
@@ -135,4 +135,5 @@ nav:
     - life/index.md
     - 南京之旅: life/2024-6-15/2024-6-15.md
     - 做饭技巧: life/2024-7-17/2024-7-17.md
+  
     
