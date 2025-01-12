@@ -1,0 +1,1482 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../rust/">
+      
+      
+        <link rel="next" href="../../leetcode/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>shell_gpt - MyDocs for cyberalong</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.tonycrane.cc/jbmono/jetbrainsmono.css">
+    
+      <link rel="stylesheet" href="https://cdn.tonycrane.cc/utils/katex.min.css">
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#shell-gpt" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="MyDocs for cyberalong" class="md-header__button md-logo" aria-label="MyDocs for cyberalong" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.857 13.511c-.48 1.545-2.081 2.995-4.002 3.296.31.48.452 1.074.377 1.733-.208 1.789-1.921 3.23-3.758 3.249-1.243.009-2.928-.528-4.115-2.402-1.064-1.666-1.215-4.313-1.14-5.113-1.299 1.328-2.109 2.618-2.495 3.512-.866 2.025-1.196 4.492-1.177 5.65 0 0-.16.151-.31.18-.48-.085-.895-.264-1.206-.537-.376-.34-.461-.66-.461-.66.574-2.872 1.488-4.66 2.853-6.704 1.836-2.76 4.67-4.464 8.032-5.49 2.43-.744 4.954-.904 6.686.565.933.772.989 1.883.716 2.721M9.544 11.986c-.575.96-2.147 2.505-3.39 3.305-2.59 1.657-4.454 1.77-5.387 1.177a1.5 1.5 0 0 1-.292-.235c-.725-.763-.602-2.119.245-3.23.415-.546.951-.932 1.47-1.111-.406-.189-.679-.584-.735-1.14-.113-1.11.725-2.57 1.883-3.164 1.017-.518 3.211-1.036 4.821 1.366.631.932 1.196 2.26 1.385 3.032M20.184 1.89c-.14-1.384-1.62-1.893-3.248-1.196-.772.33-1.45.885-1.93 1.516.075-.63-.104-1.186-.556-1.516-.895-.65-2.524-.17-3.635 1.036-.386.424-1.648 1.95-1.714 4.19-.028 1.083.452 3.485 2.034 5.142 4.219-1.591 6.488-4.03 7.354-5.038.999-1.168 1.422-2.194 1.601-2.947.132-.594.113-1.017.094-1.187"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MyDocs for cyberalong
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              shell_gpt
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../csapp/" class="md-tabs__link">
+          
+  
+  CSAPP
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../PA/" class="md-tabs__link">
+          
+  
+  PA
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  tool
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../leetcode/" class="md-tabs__link">
+          
+  
+  leetcode
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../life/" class="md-tabs__link">
+          
+  
+  life
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MyDocs for cyberalong" class="md-nav__button md-logo" aria-label="MyDocs for cyberalong" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.857 13.511c-.48 1.545-2.081 2.995-4.002 3.296.31.48.452 1.074.377 1.733-.208 1.789-1.921 3.23-3.758 3.249-1.243.009-2.928-.528-4.115-2.402-1.064-1.666-1.215-4.313-1.14-5.113-1.299 1.328-2.109 2.618-2.495 3.512-.866 2.025-1.196 4.492-1.177 5.65 0 0-.16.151-.31.18-.48-.085-.895-.264-1.206-.537-.376-.34-.461-.66-.461-.66.574-2.872 1.488-4.66 2.853-6.704 1.836-2.76 4.67-4.464 8.032-5.49 2.43-.744 4.954-.904 6.686.565.933.772.989 1.883.716 2.721M9.544 11.986c-.575.96-2.147 2.505-3.39 3.305-2.59 1.657-4.454 1.77-5.387 1.177a1.5 1.5 0 0 1-.292-.235c-.725-.763-.602-2.119.245-3.23.415-.546.951-.932 1.47-1.111-.406-.189-.679-.584-.735-1.14-.113-1.11.725-2.57 1.883-3.164 1.017-.518 3.211-1.036 4.821 1.366.631.932 1.196 2.26 1.385 3.032M20.184 1.89c-.14-1.384-1.62-1.893-3.248-1.196-.772.33-1.45.885-1.93 1.516.075-.63-.104-1.186-.556-1.516-.895-.65-2.524-.17-3.635 1.036-.386.424-1.648 1.95-1.714 4.19-.028 1.083.452 3.485 2.034 5.142 4.219-1.591 6.488-4.03 7.354-5.038.999-1.168 1.422-2.194 1.601-2.947.132-.594.113-1.017.094-1.187"/></svg>
+
+    </a>
+    MyDocs for cyberalong
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome to MkDocs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../page1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    buidling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CSAPP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            CSAPP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../csapp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CSAPP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../csapp/csapp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    bomblab
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../csapp/cs144/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cs144
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    PA
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            PA
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    table of contents
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PA/PA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PA/riscv/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    riscv
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    tool
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            tool
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    介绍一些使用的工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chatgpt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    chatgpt
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gdb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    gdb
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rust/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    rust
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    shell_gpt
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    shell_gpt
+  </span>
+  
+
+      </a>
+      
+        
+  
+    
+  
+  <nav class="md-nav md-nav--secondary " aria-label="On this Page">
+    
+    
+    
+    
+      <label class="md-nav__title" for="__toc">
+        <span class="md-nav__icon md-icon"></span>
+        On this Page
+      </label>
+      <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+        
+          <li class="md-nav__item">
+  <a href="#shell-gpt" class="md-nav__link">
+    <span class="md-ellipsis">
+      shell-gpt使用说明
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      今夜的奇幻旅行
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="今夜的奇幻旅行">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#zsh_hist" class="md-nav__link">
+    <span class="md-ellipsis">
+      zsh_hist原因
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zsh_history" class="md-nav__link">
+    <span class="md-ellipsis">
+      zsh_history优化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      我试出来的一个很唐的
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rime" class="md-nav__link">
+    <span class="md-ellipsis">
+      rime输入法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="rime输入法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装等一笔带过
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      需要注意的地方
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vimtab4" class="md-nav__link">
+    <span class="md-ellipsis">
+      vim的tab还是设置为4格比较好
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4个空格缩进
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4个空格缩进">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      优点：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      缺点：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2个空格缩进
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2个空格缩进">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      优点：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      缺点：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      总结
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      配置编辑器
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="配置编辑器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vs-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      VS Code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vim
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zsh-vs-fish" class="md-nav__link">
+    <span class="md-ellipsis">
+      zsh vs fish
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    
+  </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    leetcode
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            leetcode
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    leetcode
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/base/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基础算法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    life
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            life
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../life/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    我的生活
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../life/2024-6-15/2024-6-15/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    南京之旅
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../life/2024-7-17/2024-7-17/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    做饭技巧
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <h1>shell_gpt</h1>
+
+<h2 id="shell-gpt">shell-gpt使用说明<a class="headerlink" href="#shell-gpt" title="Anchor link to this section for reference">&para;</a></h2>
+<p>需求就是在命令行使用大模型,项目已经非常不错,而且也有好心人可以生成免费的api来使用chatgpt.所以用起来就非常爽(ubuntu这个b输入法真的是一炮大便啊,写下这句话的后面我就来装好的输入法,rime输入法+雾淞拼音)</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="o">(</span>base<span class="o">)</span><span class="w"> </span>along@along-Lenovo-Legion-Y9000K2020H:<span class="w"> </span>/home/along<span class="w">  </span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>➜<span class="w">   </span>sgpt<span class="w"> </span>--shell<span class="w"> </span><span class="s2">&quot;查看我系统上是如何开机启动clash的&quot;</span><span class="w">         </span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>ls<span class="w"> </span>/etc/systemd/system/clash.service
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>clash.service
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="o">[</span>E<span class="o">]</span>xecute,<span class="w"> </span><span class="o">[</span>D<span class="o">]</span>escribe,<span class="w"> </span><span class="o">[</span>A<span class="o">]</span>bort:<span class="w"> </span>E
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>/etc/systemd/system/clash.service
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="o">[</span>sudo<span class="o">]</span><span class="w"> </span>password<span class="w"> </span><span class="k">for</span><span class="w"> </span>along:<span class="w"> </span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>Sorry,<span class="w"> </span>try<span class="w"> </span>again.
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="o">[</span>sudo<span class="o">]</span><span class="w"> </span>password<span class="w"> </span><span class="k">for</span><span class="w"> </span>along:<span class="w"> </span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>●<span class="w"> </span>clash.service<span class="w"> </span>-<span class="w"> </span>clash
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">     </span>Loaded:<span class="w"> </span>loaded<span class="w"> </span><span class="o">(</span>/etc/systemd/system/clash.service<span class="p">;</span><span class="w"> </span>enabled<span class="p">;</span><span class="w"> </span>vendor<span class="w"> </span>preset:<span class="w"> </span>enabled<span class="o">)</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">     </span>Active:<span class="w"> </span>active<span class="w"> </span><span class="o">(</span>running<span class="o">)</span><span class="w"> </span>since<span class="w"> </span>Fri<span class="w"> </span><span class="m">2024</span>-06-28<span class="w"> </span><span class="m">01</span>:41:38<span class="w"> </span>CST<span class="p">;</span><span class="w"> </span>1h<span class="w"> </span>26min<span class="w"> </span>ago
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">   </span>Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">1109</span><span class="w"> </span><span class="o">(</span>clash<span class="o">)</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">      </span>Tasks:<span class="w"> </span><span class="m">22</span><span class="w"> </span><span class="o">(</span>limit:<span class="w"> </span><span class="m">76692</span><span class="o">)</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">     </span>Memory:<span class="w"> </span><span class="m">36</span>.8M
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">     </span>CGroup:<span class="w"> </span>/system.slice/clash.service
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">             </span>└─1109<span class="w"> </span>/usr/bin/clash<span class="w"> </span>-f<span class="w"> </span>/home/along/desk/clash/config.yaml
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>Jun<span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">03</span>:07:42<span class="w"> </span>along-Lenovo-Legion-Y9000K2020H<span class="w"> </span>clash<span class="o">[</span><span class="m">1109</span><span class="o">]</span>:<span class="w"> </span><span class="nv">time</span><span class="o">=</span><span class="s2">&quot;2024-06-28T03:07:42+08:00&quot;</span><span class="w"> </span><span class="nv">level</span><span class="o">=</span>info<span class="w"> </span><span class="nv">msg</span><span class="o">=</span><span class="s2">&quot;[TCP] 127.0.0.1:45726 --&gt; &gt;</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="s2">Jun 28 03:07:42 along-Lenovo-Legion-Y9000K2020H clash[1109]: time=&quot;</span><span class="m">2024</span>-06-28T03:07:42+08:00<span class="s2">&quot; level=info msg=&quot;</span><span class="o">[</span>TCP<span class="o">]</span><span class="w"> </span><span class="m">127</span>.0.0.1:45742<span class="w"> </span>--&gt;<span class="w"> </span>&gt;
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>Jun<span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">03</span>:07:50<span class="w"> </span>along-Lenovo-Legion-Y9000K2020H<span class="w"> </span>clash<span class="o">[</span><span class="m">1109</span><span class="o">]</span>:<span class="w"> </span><span class="nv">time</span><span class="o">=</span><span class="s2">&quot;2024-06-28T03:07:50+08:00&quot;</span><span class="w"> </span><span class="nv">level</span><span class="o">=</span>info<span class="w"> </span><span class="nv">msg</span><span class="o">=</span><span class="s2">&quot;[TCP] 127.0.0.1:34094 --&gt; &gt;</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="s2">Jun 28 03:07:50 along-Lenovo-Legion-Y9000K2020H clash[1109]: time=&quot;</span><span class="m">2024</span>-06-28T03:07:50+08:00<span class="s2">&quot; level=info msg=&quot;</span><span class="o">[</span>TCP<span class="o">]</span><span class="w"> </span><span class="m">127</span>.0.0.1:34080<span class="w"> </span>--&gt;<span class="w"> </span>&gt;
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>Jun<span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">03</span>:07:53<span class="w"> </span>along-Lenovo-Legion-Y9000K2020H<span class="w"> </span>clash<span class="o">[</span><span class="m">1109</span><span class="o">]</span>:<span class="w"> </span><span class="nv">time</span><span class="o">=</span><span class="s2">&quot;2024-06-28T03:07:53+08:00&quot;</span><span class="w"> </span><span class="nv">level</span><span class="o">=</span>info<span class="w"> </span><span class="nv">msg</span><span class="o">=</span><span class="s2">&quot;[TCP] 127.0.0.1:34106 --&gt; &gt;</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="s2">Jun 28 03:07:58 along-Lenovo-Legion-Y9000K2020H clash[1109]: time=&quot;</span><span class="m">2024</span>-06-28T03:07:58+08:00<span class="s2">&quot; level=info msg=&quot;</span><span class="o">[</span>TCP<span class="o">]</span><span class="w"> </span><span class="m">127</span>.0.0.1:43650<span class="w"> </span>--&gt;<span class="w"> </span>&gt;
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>Jun<span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">03</span>:07:58<span class="w"> </span>along-Lenovo-Legion-Y9000K2020H<span class="w"> </span>clash<span class="o">[</span><span class="m">1109</span><span class="o">]</span>:<span class="w"> </span><span class="nv">time</span><span class="o">=</span><span class="s2">&quot;2024-06-28T03:07:58+08:00&quot;</span><span class="w"> </span><span class="nv">level</span><span class="o">=</span>info<span class="w"> </span><span class="nv">msg</span><span class="o">=</span><span class="s2">&quot;[TCP] 127.0.0.1:43654 --&gt; &gt;</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="s2">Jun 28 03:08:06 along-Lenovo-Legion-Y9000K2020H clash[1109]: time=&quot;</span><span class="m">2024</span>-06-28T03:08:06+08:00<span class="s2">&quot; level=info msg=&quot;</span><span class="o">[</span>TCP<span class="o">]</span><span class="w"> </span><span class="m">127</span>.0.0.1:41268<span class="w"> </span>--&gt;<span class="w"> </span>&gt;
+</code></pre></div>
+<h2 id="_1">今夜的奇幻旅行<a class="headerlink" href="#_1" title="Anchor link to this section for reference">&para;</a></h2>
+<p>首先我发现我的zsh_history出大问题,有一些不好的中文历史记录要删除
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>zsh_histroy的编码格式是一个特殊的格式,导致了zsh_history的文件内容出现了乱码,所以vim或者vscode打开时候就会出现中文乱码.
+</code></pre></div>
+这个不是说常见的zsh的中文乱码而是历史记录的乱码,<a href="https://wszqkzqk.github.io/2024/03/31/zsh-history-unicode-decode/">解码含有Unicode的zsh历史记录</a></p>
+<h4 id="zsh_hist">zsh_hist原因<a class="headerlink" href="#zsh_hist" title="Anchor link to this section for reference">&para;</a></h4>
+<p>zsh的历史记录并非直接使用UTF-8编码，而是使用了一种特殊的元格式编码。这种编码的格式如下：</p>
+<p>Unicode字节前加上了元字节0x83开头
+后续的内容需要与32进行异或运算才能得到原始值
+因此，如果要解码zsh的历史记录，需要先找到0x83开头的字节，将其后面的内容转化为与32进行异或运算的值，才能得到结果。</p>
+<h4 id="zsh_history">zsh_history优化<a class="headerlink" href="#zsh_history" title="Anchor link to this section for reference">&para;</a></h4>
+<p>.zsh_history 历史记录优化
+.zsh_history的存储编码是一个非常特殊的编码,不是常见的utf,gbk什么的，所以里面中文用别的软件打开了就乱码了，想用python把.zsh_history的重复的都去掉，读的时候就报错了，zsh官方有人问特殊字符怎么办，倒是有一个c语言的版本，最后用:</p>
+<p>bash
+setopt HIST_IGNORE_ALL_DUPS
+sort -t ";" -k 2 -u ~/.zsh_history | sort -o ~/.zsh_history
+解决问题，有时候shell真的是神器</p>
+<h4 id="_2">我试出来的一个很唐的<a class="headerlink" href="#_2" title="Anchor link to this section for reference">&para;</a></h4>
+<p>在zsh的'.zshrc'的plugins中添加history就会把所有的历史记录中的乱码全部删除.这个是一个很唐的方法,但是确实有效,我也不知道为什么,但是确实有效.</p>
+<h2 id="rime">rime输入法<a class="headerlink" href="#rime" title="Anchor link to this section for reference">&para;</a></h2>
+<h3 id="_3">安装等一笔带过<a class="headerlink" href="#_3" title="Anchor link to this section for reference">&para;</a></h3>
+<p><a href="https://www.cnblogs.com/KLangHu/p/17699295.html">Ubuntu 22.04 Desktop配置雾凇拼音Rime-Ice</a></p>
+<h3 id="_4">需要注意的地方<a class="headerlink" href="#_4" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Plum管理rime配置</p>
+<p>Ctrl+` 会切换输入方案,这个是默认的快捷键,我把这个快捷键改没了,这个是我习惯的(因为他这几个热键我都要用),在rime输入法的配置文件'default.yaml(/home/along/.config/ibus/rime/default.yaml)'中修改</p>
+<p>把ibus这颜色换成绿色,橙色太刺眼来.</p>
+<h3 id="vimtab4">vim的tab还是设置为4格比较好<a class="headerlink" href="#vimtab4" title="Anchor link to this section for reference">&para;</a></h3>
+<p>在 Python 编程中，通常推荐使用4个空格来进行缩进。这一建议来自于 Python 的官方风格指南 PEP 8（Python Enhancement Proposal 8），它被广泛接受和应用于大多数 Python 项目中。然而，2个空格的缩进在其他编程语言和一些团队中也很常见。以下是两种缩进方式的优缺点：</p>
+<h3 id="4">4个空格缩进<a class="headerlink" href="#4" title="Anchor link to this section for reference">&para;</a></h3>
+<h4 id="_5">优点：<a class="headerlink" href="#_5" title="Anchor link to this section for reference">&para;</a></h4>
+<ol>
+<li><strong>可读性高</strong>：4个空格的缩进使代码块之间的层次结构更加明显，特别是在嵌套较深的情况下。</li>
+<li><strong>广泛接受</strong>：4个空格是 Python 社区和许多其他编程语言社区的标准，遵循这一标准可以使代码更易于共享和协作。</li>
+<li><strong>工具支持</strong>：大多数代码编辑器和IDE默认支持并配置为4个空格的缩进。</li>
+</ol>
+<h4 id="_6">缺点：<a class="headerlink" href="#_6" title="Anchor link to this section for reference">&para;</a></h4>
+<ol>
+<li><strong>占用空间多</strong>：相比2个空格，4个空格会在每一层缩进时占用更多的水平空间，这在一些情况下可能导致代码行过长。</li>
+</ol>
+<h3 id="2">2个空格缩进<a class="headerlink" href="#2" title="Anchor link to this section for reference">&para;</a></h3>
+<h4 id="_7">优点：<a class="headerlink" href="#_7" title="Anchor link to this section for reference">&para;</a></h4>
+<ol>
+<li><strong>节省空间</strong>：2个空格的缩进占用的水平空间更少，可以在有限的屏幕宽度内显示更多的代码内容。</li>
+<li><strong>简洁</strong>：对于简单的代码或嵌套层次较少的代码，2个空格的缩进显得更简洁。</li>
+</ol>
+<h4 id="_8">缺点：<a class="headerlink" href="#_8" title="Anchor link to this section for reference">&para;</a></h4>
+<ol>
+<li><strong>可读性较差</strong>：在深层嵌套时，2个空格的缩进可能不如4个空格的缩进那么清晰，容易导致阅读和理解困难。</li>
+<li><strong>不符合主流标准</strong>：在Python 编程中，2个空格的缩进不符合 PEP 8 的建议，可能会导致团队合作中的不一致性。</li>
+</ol>
+<h3 id="_9">总结<a class="headerlink" href="#_9" title="Anchor link to this section for reference">&para;</a></h3>
+<p>对于 Python 编程，通常推荐使用4个空格的缩进，因为它是 PEP 8 的建议并且被广泛接受和应用。如果你在一个团队中工作，遵循团队的代码风格指南是最重要的。如果没有特定的要求，4个空格是一个安全的选择。对于其他编程语言和特定项目，可以根据实际需求选择2个或4个空格的缩进。</p>
+<h3 id="_10">配置编辑器<a class="headerlink" href="#_10" title="Anchor link to this section for reference">&para;</a></h3>
+<p>确保你的编辑器配置正确，以便自动使用4个空格进行缩进：</p>
+<h4 id="vs-code">VS Code<a class="headerlink" href="#vs-code" title="Anchor link to this section for reference">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="nt">&quot;editor.tabSize&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nt">&quot;editor.insertSpaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">}</span>
+</code></pre></div>
+<h4 id="vim">Vim<a class="headerlink" href="#vim" title="Anchor link to this section for reference">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">set</span> <span class="nb">tabstop</span><span class="p">=</span><span class="m">4</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">set</span> <span class="nb">shiftwidth</span><span class="p">=</span><span class="m">4</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">set</span> <span class="nb">expandtab</span>
+</code></pre></div>
+<p>通过这些配置，可以确保你的代码缩进始终符合标准，提高代码的可读性和一致性。</p>
+<h2 id="zsh-vs-fish">zsh vs fish<a class="headerlink" href="#zsh-vs-fish" title="Anchor link to this section for reference">&para;</a></h2>
+<p>被zsh_history搞了一次后我有点想换到fish了(但是确实有点麻烦),我确实有点沉迷在工具的优化上了,当然了,输入法还是值得优化一下的.</p>
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2023<a href="https://github.com/dragonzhoulong" target="_blank" rel="noopener"> dragon</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/dragonzhoulong" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.sections", "navigation.path", "toc.integrate", "toc.follow", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotate", "content.code.copy"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../../js/tablesort.js"></script>
+      
+        <script src="https://cdn.tonycrane.cc/utils/katex.min.js"></script>
+      
+        <script src="../../js/katex.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

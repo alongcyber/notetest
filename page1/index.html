@@ -1,0 +1,1684 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../csapp/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>buidling - MyDocs for cyberalong</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.tonycrane.cc/jbmono/jetbrainsmono.css">
+    
+      <link rel="stylesheet" href="https://cdn.tonycrane.cc/utils/katex.min.css">
+    
+      <link rel="stylesheet" href="../css/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="MyDocs for cyberalong" class="md-header__button md-logo" aria-label="MyDocs for cyberalong" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.857 13.511c-.48 1.545-2.081 2.995-4.002 3.296.31.48.452 1.074.377 1.733-.208 1.789-1.921 3.23-3.758 3.249-1.243.009-2.928-.528-4.115-2.402-1.064-1.666-1.215-4.313-1.14-5.113-1.299 1.328-2.109 2.618-2.495 3.512-.866 2.025-1.196 4.492-1.177 5.65 0 0-.16.151-.31.18-.48-.085-.895-.264-1.206-.537-.376-.34-.461-.66-.461-.66.574-2.872 1.488-4.66 2.853-6.704 1.836-2.76 4.67-4.464 8.032-5.49 2.43-.744 4.954-.904 6.686.565.933.772.989 1.883.716 2.721M9.544 11.986c-.575.96-2.147 2.505-3.39 3.305-2.59 1.657-4.454 1.77-5.387 1.177a1.5 1.5 0 0 1-.292-.235c-.725-.763-.602-2.119.245-3.23.415-.546.951-.932 1.47-1.111-.406-.189-.679-.584-.735-1.14-.113-1.11.725-2.57 1.883-3.164 1.017-.518 3.211-1.036 4.821 1.366.631.932 1.196 2.26 1.385 3.032M20.184 1.89c-.14-1.384-1.62-1.893-3.248-1.196-.772.33-1.45.885-1.93 1.516.075-.63-.104-1.186-.556-1.516-.895-.65-2.524-.17-3.635 1.036-.386.424-1.648 1.95-1.714 4.19-.028 1.083.452 3.485 2.034 5.142 4.219-1.591 6.488-4.03 7.354-5.038.999-1.168 1.422-2.194 1.601-2.947.132-.594.113-1.017.094-1.187"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MyDocs for cyberalong
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              buidling
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href=".." class="md-tabs__link">
+          
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../csapp/" class="md-tabs__link">
+          
+  
+  CSAPP
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../PA/" class="md-tabs__link">
+          
+  
+  PA
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../tool/" class="md-tabs__link">
+          
+  
+  tool
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../leetcode/" class="md-tabs__link">
+          
+  
+  leetcode
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../life/" class="md-tabs__link">
+          
+  
+  life
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="MyDocs for cyberalong" class="md-nav__button md-logo" aria-label="MyDocs for cyberalong" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.857 13.511c-.48 1.545-2.081 2.995-4.002 3.296.31.48.452 1.074.377 1.733-.208 1.789-1.921 3.23-3.758 3.249-1.243.009-2.928-.528-4.115-2.402-1.064-1.666-1.215-4.313-1.14-5.113-1.299 1.328-2.109 2.618-2.495 3.512-.866 2.025-1.196 4.492-1.177 5.65 0 0-.16.151-.31.18-.48-.085-.895-.264-1.206-.537-.376-.34-.461-.66-.461-.66.574-2.872 1.488-4.66 2.853-6.704 1.836-2.76 4.67-4.464 8.032-5.49 2.43-.744 4.954-.904 6.686.565.933.772.989 1.883.716 2.721M9.544 11.986c-.575.96-2.147 2.505-3.39 3.305-2.59 1.657-4.454 1.77-5.387 1.177a1.5 1.5 0 0 1-.292-.235c-.725-.763-.602-2.119.245-3.23.415-.546.951-.932 1.47-1.111-.406-.189-.679-.584-.735-1.14-.113-1.11.725-2.57 1.883-3.164 1.017-.518 3.211-1.036 4.821 1.366.631.932 1.196 2.26 1.385 3.032M20.184 1.89c-.14-1.384-1.62-1.893-3.248-1.196-.772.33-1.45.885-1.93 1.516.075-.63-.104-1.186-.556-1.516-.895-.65-2.524-.17-3.635 1.036-.386.424-1.648 1.95-1.714 4.19-.028 1.083.452 3.485 2.034 5.142 4.219-1.591 6.488-4.03 7.354-5.038.999-1.168 1.422-2.194 1.601-2.947.132-.594.113-1.017.094-1.187"/></svg>
+
+    </a>
+    MyDocs for cyberalong
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome to MkDocs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    buidling
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    buidling
+  </span>
+  
+
+      </a>
+      
+        
+  
+    
+  
+  <nav class="md-nav md-nav--secondary " aria-label="On this Page">
+    
+    
+    
+      
+    
+    
+      <label class="md-nav__title" for="__toc">
+        <span class="md-nav__icon md-icon"></span>
+        On this Page
+      </label>
+      <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+        
+          <li class="md-nav__item">
+  <a href="#another-heading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Another heading
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Another heading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      一些沟是
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      这些天
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      关于这个礼拜
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      开始实现代码高粱
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table" class="md-nav__link">
+    <span class="md-ellipsis">
+      关于table
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nav" class="md-nav__link">
+    <span class="md-ellipsis">
+      nav(导航)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neovim" class="md-nav__link">
+    <span class="md-ellipsis">
+      neovim
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#github" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用多个密钥来在多个github账号上切换
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="使用多个密钥来在多个github账号上切换">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tweak" class="md-nav__link">
+    <span class="md-ellipsis">
+      关于tweak
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="关于tweak">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clash" class="md-nav__link">
+    <span class="md-ellipsis">
+      关于clash
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clash_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      clash透明代理
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gitgithub" class="md-nav__link">
+    <span class="md-ellipsis">
+      关于git和github
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="关于git和github">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git-remote" class="md-nav__link">
+    <span class="md-ellipsis">
+      更改或者添加git remote仓库的地址
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      强制推送
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#markdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      一些关于markdown的记录
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      关于择日飞升
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    
+  </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CSAPP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            CSAPP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../csapp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CSAPP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../csapp/csapp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    bomblab
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../csapp/cs144/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cs144
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    PA
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            PA
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    table of contents
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PA/PA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PA/riscv/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    riscv
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    tool
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            tool
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    介绍一些使用的工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tool/git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tool/chatgpt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    chatgpt
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tool/gdb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    gdb
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tool/rust/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    rust
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tool/shell_gpt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    shell_gpt
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    leetcode
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            leetcode
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../leetcode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    leetcode
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../leetcode/base/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基础算法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    life
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            life
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../life/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    我的生活
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../life/2024-6-15/2024-6-15/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    南京之旅
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../life/2024-7-17/2024-7-17/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    做饭技巧
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+<h1 id="_1">建站的记录<a class="headerlink" href="#_1" title="Anchor link to this section for reference">&para;</a></h1>
+<p>打算还是迁移到主仓库了
+<a href="https://github.com/alongcyber/notetest.git">https://github.com/alongcyber/notetest.git</a></p>
+<h2 id="another-heading">Another heading<a class="headerlink" href="#another-heading" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Some more shit</p>
+<h3 id="_2">一些沟是<a class="headerlink" href="#_2" title="Anchor link to this section for reference">&para;</a></h3>
+<p>哈哈哈把喇叭卡和单位,很喜欢我的键盘敲击的声音,有一种清新愉悦的快感,谁懂阿,给虚拟机新增了32GB内存,顿时流畅了许多,输入法不再有莫名的顿挫.</p>
+<h3 id="_3">这些天<a class="headerlink" href="#_3" title="Anchor link to this section for reference">&para;</a></h3>
+<p>半角字母的美,谁懂,感觉很多事情,没有必要弄的不一样,懂我意思么.</p>
+<h3 id="_4">关于这个礼拜<a class="headerlink" href="#_4" title="Anchor link to this section for reference">&para;</a></h3>
+<p>这个礼拜有些事情步入了正规,比如考研,比如coding,比如五级流水线CPU,比如CSAPP,比如我对一些事情的认识.
+积极使用半角标点符号的好处(<code>ctrl</code>+<code>up</code>)=&gt;</p>
+<h2 id="_5">开始实现代码高粱<a class="headerlink" href="#_5" title="Anchor link to this section for reference">&para;</a></h2>
+<p>文档看的不够仔细.
+开始嗯造</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Customization</label><label for="__tabbed_1_2">很开心的事情</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li>nav</li>
+<li>js</li>
+<li>css
+目前了解的情况,大概就是nav是navigator导航,js应该跟katex有点关系,css大概或许已经解决?(haha)
+接下来想做的事情,<del>大概就是好好的写note了.</del>,大概就是梳理清除nav的用法,然后改一下下icon,然后开始嗯造note</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p>目前总算把git最基本的一些东西搞的比较清楚了,还没弄清楚的是merge这些多线开发,团队协作的东西,但是我单人开发,单项开法.</p>
+<p>好像markdown也有点这个就近原则的意思,听难绷的.</p>
+<p>这个星期接下来的时间就会是恩造,积分高数balabla.</p>
+<p>Changing the logo and icons
+When installing Material for Mkdocs,you immediately get access to over 8,000 icons ready to be used for customization  of specific parts of the theme and/or then writing your documentation in Markdown.Not enough</p>
+</div>
+</div>
+</div>
+<h2 id="table">关于table<a class="headerlink" href="#table" title="Anchor link to this section for reference">&para;</a></h2>
+<p>| shit  | shit    |
+|-------|------r lobortis orci</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Ordered list</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<p>|
+|<code>get</code>  |<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 7 9 19l-5.5-5.5 1.41-1.41L9 16.17 19.59 5.59z"/></svg></span> Fetch resource|
+|<code>PUT</code>  |<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M.41 13.41 6 19l1.41-1.42L1.83 12m20.41-6.42L11.66 16.17 7.5 12l-1.43 1.41L11.66 19l12-12M18 7l-1.41-1.42-6.35 6.35 1.42 1.41z"/></svg></span> Update res|</p>
+<p>-&gt;r lobortis orci</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Ordered list</label><label for="__tabbed_3_2">C</label><label for="__tabbed_3_3">C++</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello world!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Hello world!&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="highlight"><span class="filename">Conten tabs with code blocks</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>在markdoown中输入
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>=== &quot;C&quot;
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    ``` c
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="ni">#include</span> &lt;stdio.h&gt;
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>r lobortis orci
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>=== &quot;Ordered list&quot;
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>=== &quot;C++&quot;
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    ``` c++
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>    <span class="ni">#include</span> &lt;iostream&gt;
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>    int main(void) {
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>      std::cout &lt;&lt; &quot;Hello world!&quot; &lt;&lt; std::endl;
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>      return 0;
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>    }
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>    ``` 
+</code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Unordered list</label><label for="__tabbed_4_2">Ordered list</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li>Sed sagittis eleifend rutrum</li>
+<li>Donec vitae suscipit est</li>
+<li>Nulla tempor lobortis orci</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ol>
+<li>Sed sagittis eleifend rutrum</li>
+<li>Donec vitae suscipit est</li>
+<li>Nulla tempor lobortis orci</li>
+</ol>
+</div>
+</div>
+</div>
+<p>一定要空格阿,并且有缩进(嵌套制表符)
+需要两次缩进</p>
+<h2 id="nav">nav(导航)<a class="headerlink" href="#nav" title="Anchor link to this section for reference">&para;</a></h2>
+<p>还是得手动修改mkdocs.yml中的目录,并不是自动检测新增文本文件来自动生成mkdocs.yml</p>
+<h2 id="neovim">neovim<a class="headerlink" href="#neovim" title="Anchor link to this section for reference">&para;</a></h2>
+<ul>
+<li>四种mode<code>command</code>,<code>insert</code>,<code>normal</code>,<code>view</code>.</li>
+<li>
+<p><code>Esc</code>  =&gt; <code>normal</code> =&gt; <code>i</code>,<code>I</code>,<code>o</code>,<code>O</code>,<code>a</code>,<code>A</code> =&gt; <code>insert</code>=&gt;<code>Esc</code> =&gt; <code>normal</code>=&gt;<code>ctrl+v</code>=&gt;<code>view</code>=&gt;<code>:</code>=&gt;<code>command</code></p>
+</li>
+<li>
+<p><code>0</code></p>
+</li>
+</ul>
+<h2 id="github">使用多个密钥来在多个github账号上切换<a class="headerlink" href="#github" title="Anchor link to this section for reference">&para;</a></h2>
+<p>How can I configure multiple SSH keys for different GitHub accounts?
+To configure multiple SSH keys for different GitHub accounts, you can follow these steps:</p>
+<ol>
+<li><strong>Generate SSH keys</strong>: For each GitHub account, generate a new SSH key (if you haven't already) with a unique email address.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>rsa<span class="w"> </span>-b<span class="w"> </span><span class="m">4096</span><span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;your-email@example.com&quot;</span>
+</code></pre></div>
+<p>When prompted, give each key a unique name, such as <code>id_rsa_account1</code>, <code>id_rsa_account2</code>, etc.</p>
+<ol>
+<li><strong>Add SSH keys to ssh-agent</strong>: Start the ssh-agent in the background and add your new SSH private key to the ssh-agent.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>ssh-agent<span class="w"> </span>-s<span class="k">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>ssh-add<span class="w"> </span>~/.ssh/id_rsa_account1
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>ssh-add<span class="w"> </span>~/.ssh/id_rsa_account2
+</code></pre></div>
+<ol>
+<li>
+<p><strong>Add SSH keys to GitHub accounts</strong>: For each GitHub account, go to Settings -&gt; SSH and GPG keys -&gt; New SSH key, then paste the contents of the corresponding public key file (e.g., <code>id_rsa_account1.pub</code>, <code>id_rsa_account2.pub</code>, etc.).</p>
+</li>
+<li>
+<p><strong>Create SSH config file</strong>: Create a new configuration file for SSH in your user directory, if it doesn't already exist.</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>touch<span class="w"> </span>~/.ssh/config
+</code></pre></div>
+<ol>
+<li><strong>Edit SSH config file</strong>: Open the SSH config file in a text editor, and add an entry for each GitHub account.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Account 1</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Host<span class="w"> </span>github.com-account1
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span>HostName<span class="w"> </span>github.com
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span>User<span class="w"> </span>git
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span>IdentityFile<span class="w"> </span>~/.ssh/id_rsa_account1
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="c1"># Account 2</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>Host<span class="w"> </span>github.com-account2
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">    </span>HostName<span class="w"> </span>github.com
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">    </span>User<span class="w"> </span>git
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">    </span>IdentityFile<span class="w"> </span>~/.ssh/id_rsa_account2
+</code></pre></div>
+<ol>
+<li><strong>Use SSH config in Git</strong>: When cloning a repository, use the Host alias you set in the SSH config file.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>git<span class="w"> </span>clone<span class="w"> </span>git@github.com-account1:username/repo.git
+</code></pre></div>
+<p>Replace <code>username</code> with your GitHub username and <code>repo</code> with your repository name. Use the correct Host alias for the account you want to use.</p>
+<p>This way, you can use multiple SSH keys for different GitHub accounts.</p>
+<h3 id="tweak">关于tweak<a class="headerlink" href="#tweak" title="Anchor link to this section for reference">&para;</a></h3>
+<p>这个ubuntu上的改变全局的东西有点神奇,可以改字体,系统语言设置的更改还得<code>reboot</code>,不过现在结果还行.(half punctuations)</p>
+<h4 id="clash">关于clash<a class="headerlink" href="#clash" title="Anchor link to this section for reference">&para;</a></h4>
+<p>要在Ubuntu 20.04上实现开机自动运行Clash代理,你可以按照以下步骤进行操作：</p>
+<ol>
+<li><strong>创建启动脚本</strong>：</li>
+<li>
+<p>首先,创建一个启动脚本,用于启动Clash代理.你可以在 <code>/etc/init.d/</code> 目录下创建一个新的脚本文件,比如 <code>clash-start.sh</code>.</p>
+</li>
+<li>
+<p><strong>编辑启动脚本</strong>：</p>
+</li>
+<li>
+<p>使用文本编辑器（比如 <code>nano</code> 或 <code>vim</code>）编辑这个脚本文件.在文件中添加如下内容：
+     <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>/path/to/your/clash-binary<span class="w"> </span>-d<span class="w"> </span>/path/to/your/config/directory
+</code></pre></div>
+     请替换 <code>/path/to/your/clash-binary</code> 为你实际的 Clash 可执行文件路径,<code>/path/to/your/config/directory</code> 为你的配置文件目录.</p>
+</li>
+<li>
+<p><strong>添加可执行权限</strong>：</p>
+</li>
+<li>
+<p>添加可执行权限给你的启动脚本：
+     <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>/etc/init.d/clash-start.sh
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>设置为开机自启动</strong>：</p>
+</li>
+<li>
+<p>使用 <code>update-rc.d</code> 命令将脚本添加到启动项中：
+     <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sudo<span class="w"> </span>update-rc.d<span class="w"> </span>clash-start.sh<span class="w"> </span>defaults
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>测试</strong>：</p>
+</li>
+<li>现在你可以测试这个启动脚本是否能够正常运行.你可以重启你的计算机,然后检查 Clash 是否已经自动启动了.</li>
+</ol>
+<p>这样,每次系统启动时,Clash 代理都会自动运行.</p>
+<h4 id="clash_1">clash透明代理<a class="headerlink" href="#clash_1" title="Anchor link to this section for reference">&para;</a></h4>
+<p>TUN 模式
+新版的 Clash Premium 内核支持 TUN 模式,且目前已支持 Linux 系统下的 auto-route 和 auto-detect-interface,无需手动设置转发表,可以方便快捷的实现 透明网关（旁路由） 的功能.</p>
+<p>首先需要下载 Clash Premium 版本,替换上面的 clash 文件.接着需要设置 Linux 系统,开启转发功能.编辑文件 /etc/sysctl.conf,添加以下内容：</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>net.ipv4.ip_forward<span class="o">=</span><span class="m">1</span>
+</code></pre></div>
+保存退出后,执行以下命令使修改生效：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>sudo<span class="w"> </span>sysctl<span class="w"> </span>-p
+</code></pre></div>
+<p>然后接着需要关闭系统的 DNS 服务,使用以下命令：</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>systemd-resolved
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>disable<span class="w"> </span>systemd-resolved
+</code></pre></div>
+关于代理环境下 DNS 解析行为的深入探讨,可以参见浅谈在代理环境中的 DNS 解析行为以及我有特别的 DNS 配置和使用技巧.</p>
+<p>接着需要设置 Clash 的配置文件,添加以下内容：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="err">d</span><span class="kc">ns</span><span class="p">:</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">  </span><span class="err">e</span><span class="kc">na</span><span class="err">ble</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">  </span><span class="err">lis</span><span class="kc">ten</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">53</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">  </span><span class="err">e</span><span class="kc">n</span><span class="err">ha</span><span class="kc">n</span><span class="err">ced</span><span class="mi">-</span><span class="err">mode</span><span class="p">:</span><span class="w"> </span><span class="kc">fa</span><span class="err">ke</span><span class="mi">-</span><span class="err">ip</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">  </span><span class="kc">na</span><span class="err">meserver</span><span class="p">:</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="w">    </span><span class="mi">-</span><span class="w"> </span><span class="mf">114.114.114.114</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="w">  </span><span class="kc">fall</span><span class="err">back</span><span class="p">:</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="w">    </span><span class="mi">-</span><span class="w"> </span><span class="mf">8.8.8.8</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="kc">tun</span><span class="p">:</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="w">  </span><span class="err">e</span><span class="kc">na</span><span class="err">ble</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="w">  </span><span class="err">s</span><span class="kc">ta</span><span class="err">ck</span><span class="p">:</span><span class="w"> </span><span class="err">sys</span><span class="kc">te</span><span class="err">m</span><span class="w"> </span><span class="err">#</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">gvisor</span>
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="w">  </span><span class="err">d</span><span class="kc">ns</span><span class="mi">-</span><span class="err">hijack</span><span class="p">:</span>
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="w">    </span><span class="mi">-</span><span class="w"> </span><span class="mf">8.8.8.8</span><span class="p">:</span><span class="mi">53</span>
+<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="w">    </span><span class="mi">-</span><span class="w"> </span><span class="kc">t</span><span class="err">cp</span><span class="p">:</span><span class="c1">//8.8.8.8:53</span>
+<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="w">    </span><span class="mi">-</span><span class="w"> </span><span class="err">a</span><span class="kc">n</span><span class="err">y</span><span class="p">:</span><span class="mi">53</span>
+<a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="w">    </span><span class="mi">-</span><span class="w"> </span><span class="kc">t</span><span class="err">cp</span><span class="p">:</span><span class="c1">//any:53</span>
+<a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a><span class="w">  </span><span class="err">au</span><span class="kc">t</span><span class="err">o</span><span class="mi">-</span><span class="err">rou</span><span class="kc">te</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="err">#</span><span class="w"> </span><span class="err">au</span><span class="kc">t</span><span class="err">o</span><span class="w"> </span><span class="err">se</span><span class="kc">t</span><span class="w"> </span><span class="err">global</span><span class="w"> </span><span class="err">rou</span><span class="kc">te</span>
+<a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a><span class="w">  </span><span class="err">au</span><span class="kc">t</span><span class="err">o</span><span class="mi">-</span><span class="err">de</span><span class="kc">te</span><span class="err">c</span><span class="kc">t</span><span class="mi">-</span><span class="err">i</span><span class="kc">nterfa</span><span class="err">ce</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="err">#</span><span class="w"> </span><span class="err">co</span><span class="kc">nfl</span><span class="err">ic</span><span class="kc">t</span><span class="w"> </span><span class="err">wi</span><span class="kc">t</span><span class="err">h</span><span class="w"> </span><span class="err">i</span><span class="kc">nterfa</span><span class="err">ce</span><span class="mi">-</span><span class="kc">na</span><span class="err">me</span>
+<a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a><span class="w">  </span><span class="err">```</span>
+<a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a>
+<a id="__codelineno-14-21" name="__codelineno-14-21" href="#__codelineno-14-21"></a><span class="err">最后重启</span><span class="w"> </span><span class="err">Clash</span><span class="w"> </span><span class="err">服务即可</span><span class="p">,</span><span class="err">这样流量就会通过</span><span class="w"> </span><span class="err">TUN</span><span class="w"> </span><span class="err">接口转发</span><span class="p">,</span><span class="err">同时利用强大的分流规则</span><span class="p">,</span><span class="err">实现按需代理.也可以设置局域网内的网关地址和</span><span class="w"> </span><span class="err">DNS</span><span class="w"> </span><span class="err">服务器地址</span><span class="p">,</span><span class="err">实现透明网关.</span>
+<a id="__codelineno-14-22" name="__codelineno-14-22" href="#__codelineno-14-22"></a>
+<a id="__codelineno-14-23" name="__codelineno-14-23" href="#__codelineno-14-23"></a><span class="err">#####</span><span class="w"> </span><span class="err">为什么我的clash没有dashboard</span>
+<a id="__codelineno-14-24" name="__codelineno-14-24" href="#__codelineno-14-24"></a><span class="err">因为没有所以没有</span><span class="p">,</span><span class="err">我找到的</span><span class="w"> </span><span class="err">clash</span><span class="w"> </span><span class="kc">f</span><span class="err">or</span><span class="w"> </span><span class="err">li</span><span class="kc">nu</span><span class="err">x</span><span class="w"> </span><span class="err">的版本是不带控制界面的</span><span class="p">,</span><span class="err">需要访问</span><span class="w"> </span><span class="err">这个</span><span class="w"> </span><span class="err">web</span><span class="w"> </span><span class="err">控制台</span><span class="w"> </span><span class="err">才能进行控制.后来为了方便访问</span><span class="p">,</span><span class="err">我就把他的包都给抓了下来</span><span class="p">,</span><span class="err">放在了本地的</span><span class="w"> </span><span class="kc">n</span><span class="err">gi</span><span class="kc">n</span><span class="err">x</span><span class="w"> </span><span class="err">上.得有个clash</span><span class="mi">-</span><span class="err">ui(但是原项目已经被删掉sad)</span>
+<a id="__codelineno-14-25" name="__codelineno-14-25" href="#__codelineno-14-25"></a>
+<a id="__codelineno-14-26" name="__codelineno-14-26" href="#__codelineno-14-26"></a><span class="err">h</span><span class="kc">tt</span><span class="err">ps</span><span class="p">:</span><span class="c1">//clash.razord.top/#/proxies</span>
+<a id="__codelineno-14-27" name="__codelineno-14-27" href="#__codelineno-14-27"></a>
+<a id="__codelineno-14-28" name="__codelineno-14-28" href="#__codelineno-14-28"></a><span class="p">[</span><span class="err">h</span><span class="kc">tt</span><span class="err">ps</span><span class="p">:</span><span class="c1">//www.joeyne.cool/http/proxy/ubuntu-安装clash并配置开机启动/#clash-for-linux](https://www.joeyne.cool/http/proxy/ubuntu-安装clash并配置开机启动/#clash-for-linux)</span>
+<a id="__codelineno-14-29" name="__codelineno-14-29" href="#__codelineno-14-29"></a><span class="err">```shell</span>
+<a id="__codelineno-14-30" name="__codelineno-14-30" href="#__codelineno-14-30"></a>
+<a id="__codelineno-14-31" name="__codelineno-14-31" href="#__codelineno-14-31"></a><span class="err">#</span><span class="w"> </span><span class="err">进入下载目录（默认情况是下载到</span><span class="w"> </span><span class="err">~/Dow</span><span class="kc">nl</span><span class="err">oads</span><span class="w"> </span><span class="err">目录，如果不是请进入到对应的下载目录）</span>
+<a id="__codelineno-14-32" name="__codelineno-14-32" href="#__codelineno-14-32"></a><span class="err">cd</span><span class="w"> </span><span class="err">~/Dow</span><span class="kc">nl</span><span class="err">oads</span>
+<a id="__codelineno-14-33" name="__codelineno-14-33" href="#__codelineno-14-33"></a><span class="err">#</span><span class="w"> </span><span class="err">解压</span>
+<a id="__codelineno-14-34" name="__codelineno-14-34" href="#__codelineno-14-34"></a><span class="err">gu</span><span class="kc">n</span><span class="err">zip</span><span class="w"> </span><span class="err">clash</span><span class="mi">-</span><span class="err">li</span><span class="kc">nu</span><span class="err">x</span><span class="mi">-</span><span class="err">amd</span><span class="mi">64-</span><span class="err">v</span><span class="mi">3-</span><span class="err">v</span><span class="mf">1.15.1.</span><span class="err">gz</span>
+<a id="__codelineno-14-35" name="__codelineno-14-35" href="#__codelineno-14-35"></a><span class="err">#</span><span class="w"> </span><span class="err">重命名</span>
+<a id="__codelineno-14-36" name="__codelineno-14-36" href="#__codelineno-14-36"></a><span class="err">mv</span><span class="w"> </span><span class="err">clash</span><span class="mi">-</span><span class="err">li</span><span class="kc">nu</span><span class="err">x</span><span class="mi">-</span><span class="err">amd</span><span class="mi">64-</span><span class="err">v</span><span class="mi">3-</span><span class="err">v</span><span class="mf">1.15.1</span><span class="w"> </span><span class="err">clash</span>
+<a id="__codelineno-14-37" name="__codelineno-14-37" href="#__codelineno-14-37"></a><span class="err">#</span><span class="w"> </span><span class="err">添加可执行权限(解压后是一个可执行文件，如果没有执行权限，需要手动添加）</span>
+<a id="__codelineno-14-38" name="__codelineno-14-38" href="#__codelineno-14-38"></a><span class="err">chmod</span><span class="w"> </span><span class="err">+x</span><span class="w"> </span><span class="err">clash</span>
+<a id="__codelineno-14-39" name="__codelineno-14-39" href="#__codelineno-14-39"></a><span class="err">#</span><span class="w"> </span><span class="err">复制clash</span><span class="w"> </span><span class="err">到/usr/bi</span><span class="kc">n</span><span class="err">/文件夹(这样在终端任何位置执行</span><span class="w"> </span><span class="err">clash</span><span class="w"> </span><span class="err">即可启动)</span>
+<a id="__codelineno-14-40" name="__codelineno-14-40" href="#__codelineno-14-40"></a><span class="err">sudo</span><span class="w"> </span><span class="err">mv</span><span class="w"> </span><span class="err">clash</span><span class="w"> </span><span class="err">/usr/bi</span><span class="kc">n</span><span class="err">/</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="o">[</span>Unit<span class="o">]</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nv">Description</span><span class="o">=</span>clash
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="o">[</span>Service<span class="o">]</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="nv">Type</span><span class="o">=</span>simple
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="nv">ExecStart</span><span class="o">=</span>/usr/bin/clash<span class="w"> </span>-f<span class="w"> </span>/home/along/desk/clash/config.yaml
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="o">[</span>Install<span class="o">]</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="nv">WantedBy</span><span class="o">=</span>multi-user.target
+</code></pre></div>
+<h2 id="gitgithub">关于git和github<a class="headerlink" href="#gitgithub" title="Anchor link to this section for reference">&para;</a></h2>
+<p>ssh的密钥只能来验证ssh协议相关的,你如果使用的是https的就不能验证.所以添加remote的时候要注意,如果是ssh的话,就要用ssh的地址,如果是https的话,就要用https的地址.</p>
+<h3 id="git-remote">更改或者添加git remote仓库的地址<a class="headerlink" href="#git-remote" title="Anchor link to this section for reference">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>git<span class="w"> </span>remote<span class="w"> </span>set-url<span class="w"> </span>origin<span class="w"> </span>yours_github_repository_url
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>yours_github_repository_url
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="c1"># 此处origin可以自行修改</span>
+</code></pre></div>
+<h3 id="_6">强制推送<a class="headerlink" href="#_6" title="Anchor link to this section for reference">&para;</a></h3>
+<p>如果你不在乎<code>main</code>分支的内容，并且你想要将<code>pa1</code>分支的内容强制推送到<code>main</code>分支，你可以使用以下命令：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># 切换到pa1分支</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>git<span class="w"> </span>checkout<span class="w"> </span>pa1
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="c1"># 强制推送到远端的main分支</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>+pa1:main
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="c1"># origin是远端仓库的名称，+pa1:main表示将本地的pa1分支强制推送到远端的main分支</span>
+</code></pre></div>
+<p>这里的<code>+</code>符号表示强制推送。这将会覆盖远端的<code>main</code>分支，使其与你本地的<code>pa1</code>分支完全相同。</p>
+<p>请注意，强制推送是一种破坏性操作，它会永久地覆盖远端的<code>main</code>分支。在你执行这个操作之前，你应该确保你不需要<code>main</code>分支上的任何更改，或者你已经备份了这些更改。</p>
+<h2 id="markdown">一些关于markdown的记录<a class="headerlink" href="#markdown" title="Anchor link to this section for reference">&para;</a></h2>
+<h2 id="_7">关于择日飞升<a class="headerlink" href="#_7" title="Anchor link to this section for reference">&para;</a></h2>
+<p>确实好看,然后我还是觉得这个输入法得换一下,之前在B站上看到中州韵助手重构版.</p>
+<p>作者：奚水溪流西
+链接：<a href="https://zhuanlan.zhihu.com/p/681840313">https://zhuanlan.zhihu.com/p/681840313</a>
+来源：知乎
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<ol>
+<li>
+<p>什么是“民族团结主义”，什么是“团结派”
+所谓“民族团结主义”是我国特殊国情发展出来的逆向民族主义，“团结主义”的本质是在民族差异对待政策下以民族文化为对立基础的民族分裂主义。它过分强调“民族的虚无性”，同时致力于“去汉族化”，否定广大汉族人民应有的汉族历史叙事。它不仅抹杀了各少数民族的文化源头，各少数民族有自身文化的人文初祖，可“团结主义”一味的扭曲少数民族文化，力图将所有的少数民族的人文初祖强行划定为炎帝黄帝，它更扭曲了汉文化的文化原教旨阶段的发展历史。“团结派”们在口号上和言论中拥护民族团结平等，实际上模糊了实际存在的民族政策的差异对待，和社会主义市场经济发展条件下的客观民族关系的内在矛盾，他们往往假马克思主义者，以统战政策为政治正确之背书，借“民族团结”之名，不提先验矛盾而只提结果终论。就如同整天把“共产主义一定要实现”的不成熟的，尚且幼稚的网络左派兴趣少年们一样，不同的是，“团结派”们并不幼稚，他们的底气是“统战价值”，他们的本质是少数民族中居心不良的分裂分子。</p>
+</li>
+<li>
+<p>什么是“团结史观”
+“团结史观”是在世界观上是错误的唯心史观，团结派往往指鹿为马，指“团结史观”为“阶级史观”，披着阶级史观的皮，混淆历史概念和掩盖历史发展过程中的事件和事实以及基本结果，阶级史观要与“团结史观”划清界限。团结史观忽略，模糊，甚至美化不同民族历史发展之间的矛盾和具体的历史民族遗留问题，它在哲学观上否定了历史唯物主义，否定了马克思主义哲学。它把“民族共同体”的概念套用到了不符合实际情况的古代的各个历史阶段，只一昧的强调血统的融合，文化的包容，而忽视了不同民族之间的不同历史经济发展基础，不同文化习俗诞生社会及自然地理条件，只提出共性，不突出个性，只谈论整体，不讨论部分。只说明全部，不搞清区别。在现代科学，分子生物学的发展和开放民间的唾液检测的潮流下，早就应该被扫入历史垃圾桶的“汉人杂血论”，“汉人胡化论”已经被击破，实际情况证明了，汉民族血统在世界上恰恰是极为纯正的，反倒是不少原本是少数民族的人民群众，发现自己汉人血统的比重占主体。团结史观反对实事求是看待问题，是落后且错误的愚蠢史观，马克思主义者要警惕这种史观的虚假面貌。</p>
+</li>
+<li>
+<p>“团结主义”，“团结派”的方法论和方法
+团结派们往往运用马克思主义哲学及马克思主义政治经济学中的专业术语来哄骗，裹挟无知的网络民众和对马克思主义了解不深的，只存在于言论模仿的网络马克思主义身份兴趣爱好者。他们只强调我国曾经“反对大汉族主义”，却只口不提我国也反对“地方民族主义”他们重复念叨“世上有阶级而无民族”，而这不过是斯大林主义在苏共建设中所发展出错误的民族观点的论调之一罢了。马克思和列宁从未直接提出“世界上有阶级而无民族”的观点。阶级的存在基于生产资料私有制而存在。民族的存在基于以一定阶段的民族血统为基础，和一定时期长期共存交往关系中的人类共同文化。马克思主义者认为，阶级和民族在物质基础和意识形态两个方面是同时消灭的，而这种消灭需要在共产主义建立的前提下。消灭民族，不代表消灭民族肉体，也不代表民族文化，和否定民族发展的历史。而是消灭民族主义对文化交流和物质交往的思想隔阂和制度阻断。世界上有阶级，也有民族。民族主义是指一国的民族资产阶级为扩张市场经济利益对本国本民族无产阶级的压迫和动员，包括但不限于贸易保护主义，对外战争征兵等。那些鼓吹“自由主义”与“民族主义”联合起来的，都是以压榨本民族利益为目的的资产阶级论调。同样的，那些鼓吹“世上有阶级而无民族”与“团结统战”联合起来的，是逆向民族主义的利益分子，假借马克思主义名义，动员绝大多数人团结极少数人，在民族问题上观点失衡，本质是分裂主义的论调。</p>
+</li>
+<li>
+<p>马克思主义者的方法论和方法
+首先，拥护民族平等就要反对民族差异对待政策。统战只能是暂时的需要，而“暂时”是有界限、有时间期限的。例如少数民族加分政策，是实打实的冗政冗策，它忽略了少数民族地区真正需要的教育资源调配，教育事业发展，经济水平相对落后等多方面问题，量化加分是没有科学依据的，有人说：“加分政策加的分如今很少了，大多数少民加分少则不过一两分”。这就更该取消它了！有不如无的东西应该立马就无。一拖再拖会被统战大旗绊住自己的脚。在这个基础上，反对一切少数民族优待政策，我们鼓励将真正少数民族需要的经济资源，科技发明，基础设施，教育理念予以投入和扩大进而发展，而非拥护它们.</p>
+</li>
+<li>
+<p>评论区</p>
+</li>
+</ol>
+<p>把满清当中国的人，至少马克思主义就没学好，老马都说了当时中国被这些鞑虏征服了。</p>
+<p>“满清王朝实行这种闭关锁国政策的更主要原因是它害怕外国人会支持很多的中国人在十七世纪的大约前半个世纪里即在中国被鞑靼人征服以后所怀抱的不满情绪。由于这种原因，外国人才被禁止同中国人有任何来往。”</p>
+<p>这些往外输出“秩序”，企图扶持摇摇欲坠的满清王朝的列强，恐怕是忘记了：仇视外国人，把他们逐出国境，这在过去仅仅是出于中国地理上、人种上的原因，只是在满洲鞑靼人征服了这个国家以后才形成一种政治制度。</p>
+<p>节选自文章：《中国革命和欧洲革命》。
+作者：卡尔·马克思。1853年5月20日，伦敦发表。</p>
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2023<a href="https://github.com/dragonzhoulong" target="_blank" rel="noopener"> dragon</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/dragonzhoulong" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.sections", "navigation.path", "toc.integrate", "toc.follow", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../js/tablesort.js"></script>
+      
+        <script src="https://cdn.tonycrane.cc/utils/katex.min.js"></script>
+      
+        <script src="../js/katex.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
